@@ -1,10 +1,20 @@
-const ahh = require('http');
-const reallll = require('fs');
+const express = require ('express')
+const res = require('express/lib/response')
+const app = express()
+const port = 3000
 
-ahh.createServer(function(req, res){
-    reallll.readFile('whatever.html', function(err, data){
-        res.writeHead (200, {'Content-Type' : 'text/html'});
-        res.write(data);
-        return res.end();
-    });
-}).listen(8080);
+app.get('/', (req,res) => {
+    res.send('Hellooooooo');
+})
+
+app.get('/users', (req,res) => {
+    res.send('Yooo Adittt')
+})
+app.post('/', (req,res) => {
+    res.send('POST request to home');
+    console.log("noiceee");
+})
+
+app.listen(port, () => {
+    console.log('Shoooob Shuni');
+})
