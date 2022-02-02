@@ -1,5 +1,23 @@
 {
+  "name": "js---sagor-",
+  "version": "1.0.0",
+  "description": "New project again",
+  "main": "shuru.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheGhaplaMan/js---Sagor-.git"
+  },
+  "author": "Adit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheGhaplaMan/js---Sagor-/issues"
+  },
+  "homepage": "https://github.com/TheGhaplaMan/js---Sagor-#readme",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "mongodb": "^4.3.1"
   }
 }
