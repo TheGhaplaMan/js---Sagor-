@@ -31,15 +31,13 @@ async function main () {
     await client.connect();
     console.log("paiseeeh");
     const  db = client.db("dbNami");
-    const collection = db.collection("newCollection");
+    const coll = db.collection("newCollection");
     const dbobj = {
                 name : "Adit",
                 "Marital Status" : false
             }
-    await db.collection("newCollection").insertOne(dbobj, (err,res) => {
-        if(err) console.log(err);
-        console.log(res); 
-    })
+    db.collection("newCollection").insertOne(dbobj)
+    console.log("insert hoise");
 
     return 'done.';
 }
