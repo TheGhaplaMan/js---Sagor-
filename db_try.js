@@ -30,6 +30,7 @@ app.use(express.json()); //conerts all input from GET into json format
 
 //npm official doc
 
+// insert hoise
 app.post('/', (req, res) =>{
     async function main () {
         await client.connect();
@@ -49,7 +50,7 @@ app.post('/', (req, res) =>{
 
 })
 
-
+// gono output
 app.get('/', async (req, res) => {
     await client.connect();
     console.log("paiseeeh");
@@ -60,7 +61,7 @@ app.get('/', async (req, res) => {
     client.close();
     res.send (findResult); 
 })
-
+ // specific data ber kore send korsi
 app.get('/:naam', async (req, res) => {
     await client.connect();
     console.log("paiseeeh");
@@ -70,7 +71,7 @@ app.get('/:naam', async (req, res) => {
 
     client.close();
 
-    res.send(findResult.name);
+    res.send(findResult);
 })
 
 app.listen(port, () => {
