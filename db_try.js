@@ -5,6 +5,8 @@ const port = 3000
 const url = "mongodb+srv://TheGhaplaMan:Lu Yb Tm@cluster0.pnyuc.mongodb.net/dbNami?retryWrites=true&w=majority"
 const client = new Mongopepol(url);
 
+app.use(express.json()); //conerts all input from GET into json format 
+
 //w3school
 // Mongopepol.connect(url, (err, db) => {
 //     if (err) throw err;
@@ -27,30 +29,48 @@ const client = new Mongopepol(url);
 // })
 
 //npm official doc
-async function main () {
+
+app.post('/', (req, res) =>{
+    async function main () {
+        await client.connect();
+        console.log("paiseeeh");
+        const  db = client.db("dbNami");
+        const coll = db.collection("newCollection");
+
+        const insertResult = await coll.insertOne(req.body)
+        console.log(insertResult);
+        return 'done.';
+    }
+    main()
+        .then(console.log)
+        .catch(console.error)
+        .finally(() => client.close());
+    res.send(req.body);
+
+})
+
+
+app.get('/', async (req, res) => {
     await client.connect();
     console.log("paiseeeh");
     const  db = client.db("dbNami");
     const coll = db.collection("newCollection");
-    const dbobj = {
-                name : "Adit",
-                "Marital Status" : false
-            }
-    db.collection("newCollection").insertOne(dbobj)
-    console.log("insert hoise");
 
-    return 'done.';
-}
+    const findResult = await coll.find({}).toArray();
+    client.close();
+    res.send (findResult); 
+})
 
-main()
-    .then(console.log)
-    .catch(console.error)
-    .finally(() => client.close());
+app.get('/:naam', async (req, res) => {
+    await client.connect();
+    console.log("paiseeeh");
+    const  db = client.db("dbNami");
+    const coll = db.collection("newCollection");
+    const findResult = await coll.findOne({name : req.params.naam});
 
+    client.close();
 
-
-app.get('/', (req, res) => {
-    res.send ("noiceee"); 
+    res.send(findResult.name);
 })
 
 app.listen(port, () => {
