@@ -31,8 +31,7 @@ app.use(express.json()); //conerts all input from GET into json format
 //npm official doc
 
 // insert hoise
-app.post('/', (req, res) =>{
-    async function main () {
+app.post('/', async (req, res) =>{
         await client.connect();
         console.log("paiseeeh");
         const  db = client.db("dbNami");
@@ -40,14 +39,9 @@ app.post('/', (req, res) =>{
 
         const insertResult = await coll.insertOne(req.body)
         console.log(insertResult);
-        return 'done.';
-    }
-    main()
-        .then(console.log)
-        .catch(console.error)
-        .finally(() => client.close());
-    res.send(req.body);
+        client.close();
 
+        res.send(req.body);
 })
 
 // gono output
@@ -72,6 +66,18 @@ app.get('/:naam', async (req, res) => {
     client.close();
 
     res.send(findResult);
+})
+
+app.patch('/:naam', async (req,res) => {
+    await client.connect();
+    console.log("paiseeeh");
+    const  db = client.db("dbNami");
+    const coll = db.collection("newCollection");
+    const dataUpdate = await coll.findOneAndUpdate({name : req.params.naam}, {$set: req.body});
+    
+    client.close();
+    res.send(dataUpdate);
+
 })
 
 app.listen(port, () => {
