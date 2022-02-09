@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/TheGhaplaMan/js---Sagor-#readme",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.2",
     "mongodb": "^4.3.1"
   },

@@ -80,6 +80,18 @@ app.patch('/:naam', async (req,res) => {
 
 })
 
+app.delete('/:naam', async (req, res) => {
+    await client.connect();
+    console.log("paiseeeh");
+    const  db = client.db("dbNami");
+    const coll = db.collection("newCollection");
+    const dataDlt = await coll.findOneAndDelete({name : req.params.naam});
+    
+    client.close();
+    res.send(dataDlt);
+
+})
+
 app.listen(port, () => {
 console.log("shuni")
 })
