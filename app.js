@@ -9,10 +9,12 @@ mongoose.connect(url).then(()=> {
 } );
 
 const userRouter = require('./routes/user.routes');
+const venueRouter = require('./routes/venue.routes');
 
 app.use(express.json()); //converts all input from GET into json format 
 
-app.use('/users', userRouter)
+app.use('/users', userRouter);
+app.use('/venue', venueRouter);
 
 app.listen(port, () => {
 console.log("shuni")

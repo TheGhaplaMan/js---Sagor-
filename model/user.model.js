@@ -2,6 +2,21 @@ const mongoose = require('mongoose');
 
 
 const userSchema = new mongoose.Schema ({
+    ticketId : {
+        type : String,
+        required : true
+    },
+    ticketOwned : {
+        type : Boolean, 
+        required : true,
+        validate : {
+            validator : function(val) {
+                if (val != true) {
+                    return "Not Found";
+                }
+            }
+        }
+    },
     userName : {
         type: String,
         required: true
@@ -24,6 +39,10 @@ const userSchema = new mongoose.Schema ({
                 return false;
             }
         }
+    },
+    entryAt :{
+        type : Date,
+        required : true
     },
     password : String
 })
