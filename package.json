@@ -1,29 +1,16 @@
 {
-  "name": "js---sagor-",
-  "version": "1.0.0",
-  "description": "New project again",
-  "main": "shuru.js",
+  "name": "js---sagor",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "node db_try.js",
-    "dev": "nodemon db_try.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TheGhaplaMan/js---Sagor-.git"
-  },
-  "author": "Adit",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/TheGhaplaMan/js---Sagor-/issues"
-  },
-  "homepage": "https://github.com/TheGhaplaMan/js---Sagor-#readme",
   "dependencies": {
-    "ejs": "^3.1.6",
-    "express": "^4.17.2",
-    "mongodb": "^4.3.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
   }
 }
