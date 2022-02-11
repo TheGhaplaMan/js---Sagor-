@@ -7,8 +7,10 @@ const userSchema = new mongoose.Schema ({
         required: true
     },
     contact : {
-        type : Number,
-        required : true
+        type : String,
+        required : true,
+        maxlength: 11,
+        minlength: 11
     },
     email : {
         type : String,
@@ -16,7 +18,7 @@ const userSchema = new mongoose.Schema ({
         lowercase : true,
         validate :  {
             validator: function(val) {
-                if(val.includes("@")){
+                if(val.includes("@") && val.includes(".")){
                     return true;
                 }
                 return false;
@@ -25,3 +27,6 @@ const userSchema = new mongoose.Schema ({
     },
     password : String
 })
+
+const User = mongoose.model('User', userSchema);
+module.exports = User;
