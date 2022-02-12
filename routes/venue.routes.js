@@ -5,8 +5,9 @@ const router = express.Router();
 
 router.post('/', venueController.createShop);
 router.get('/', venueController.getAllShop);
-router.get('/:id', venueController.getOneShop);
-router.patch('/:id', venueController.updateShopInfo);
-router.delete('/:id', venueController.dltShop);
+//router.get('/:id', venueController.getAllShop);
+router.get('/:shopId', venueController.getOneShop);
+router.patch('/:shopId', venueController.updateShopInfo);
+router.delete('/:shopId', venueController.dltShop);
 
 module.exports = router;

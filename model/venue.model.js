@@ -1,20 +1,21 @@
 const mongoose = require('mongoose');
 
 const venueSchema = new mongoose.Schema ({
-    shopid : {
+    shopId : {
         type : String,
-        required : true
     },
     shopType : {
         type : String,
+        enum : ['apparel' , 'food', 'service'],
     },
     shopOwner : {
         type : String,
         required : true,
     },
     shopContact : {
-        type : Number.toString,
+        type : String,
         maxlength: 11,
+        minlength : 11,
         required : true,
     }
 })
