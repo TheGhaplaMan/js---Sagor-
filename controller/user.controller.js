@@ -16,11 +16,11 @@ exports.getOneUser = async (req, res, next) => {
 };
 
 exports.updateOne = async (req, res, next) => {
-    const updateOne = await User.findByIdAndUpdate(req.params.id, req.body);
-    res.status(200).json(updateOne);
-}
+  const updateOne = await User.findByIdAndUpdate(req.params.id, req.body);
+  res.status(200).json(updateOne);
+};
 
 exports.dltOne = async (req, res, next) => {
-    const dltOne = await User.findByIdAndDelete(req.params.id); //dynamic api
-    res.status(200).json(dltOne);
-  };
+  const dltOne = await User.findByIdAndDelete(req.params.id); //dynamic api
+  res.status(200).json(dltOne);
+};
