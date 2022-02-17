@@ -28,20 +28,28 @@
 	  </nav>
 	
 	<div class="container"> 
-    <form id="newShop">
+    <form id="newShop"> <!-- sent to script js-->
 		<div class="mb-3">
 			<label for="exampleInputPassword1" class="form-label">Shop Name</label>
 			<input name="shopName" type="text" class="form-control" id="exampleInputEmail1">
 		</div>
 
 		<div class="mb-3">
-			<label for="exampleInputPassword1" class="form-label">Shop Type</label>
-			<input name="shopType" type="text" class="form-control" id="exampleInputEmail1">
+			<select name="shopType" class="form-select" aria-label="Default select example">
+				<option selected>Shop Type</option>
+				<option value="apparel">Apparel</option>
+				<option value="food">Food</option>
+				<option value="service">Service</option>
+			  </select>
 		</div>
 
 		<div class="mb-3">
-		  <label for="exampleInputEmail1" class="form-label">Shop Zone</label>
-		  <input type="text" name="shopZone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+			<select name="shopZone" class="form-select" aria-label="Default select example">
+				<option selected>Shop Zone</option>
+				<option value="zone 1">Zone 1</option>
+				<option value="zone 2">Zone 2</option>
+				<option value="zone 3">Zone 3</option>
+			  </select>
 		  <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
 		</div>
 		
@@ -56,12 +64,13 @@
 		</div>
 		
 		<div class="mb-3 form-check">
-		  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+		  <input type="checkbox" class="form-check-input" id="checkie">
 		  <label class="form-check-label" for="exampleCheck1">Check Check Check!</label>
 		</div>
-		<button type="submit" class="btn btn-dark">Submit</button>
+		<button id = "subButton" type="submit" class="btn btn-dark">Submit</button>
 	  </form>
 	  </div>
+	  
 	  <script src="js/script.js"></script>
 	</body>
 

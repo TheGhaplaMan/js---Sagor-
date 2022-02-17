@@ -2,7 +2,7 @@ const Venue = require("../model/venue.model");
 const { nanoid } = require('nanoid')
 
 exports.createShop = async (req, res, next) => {
-  req.body.shopContact = '0' + req.body.shopContact; //To solve 0 issue in contact num
+  req.body.shopContact = req.body.shopContact; //To solve 0 issue in contact num
   req.body.shopId = "Gig-" + nanoid();
   const newShop = await Venue.create(req.body);
   res.status(201).json(newShop);

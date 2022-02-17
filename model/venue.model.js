@@ -6,14 +6,17 @@ const venueSchema = new mongoose.Schema ({
     },
     shopName : {
         type : String,
+        required: true,
     },
     shopType : {
         type : String,
         enum : ['apparel' , 'food', 'service'],
+        required: true,
     },
     shopZone : {
         type : String,
         enum : ['zone 1' , 'zone 2', 'zone 3'],
+        required: true,
     },
     shopOwner : {
         type : String,
