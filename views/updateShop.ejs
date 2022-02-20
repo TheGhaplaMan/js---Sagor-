@@ -34,43 +34,42 @@
     <form id="newShop"> <!-- sent to script js-->
 		<div class="mb-3">
 			<label for="exampleInputPassword1" class="form-label">Shop Name</label>
-			<input name="shopName" type="text" class="form-control" id="exampleInputEmail1">
+			<input name="shopName" value="<%= info.shopName %>" type="text" class="form-control" id="exampleInputEmail1">
 		</div>
 
 		<div class="mb-3">
 			<select name="shopType" class="form-select" aria-label="Default select example">
-				<option selected>Shop Type</option>
-				<option value="apparel">Apparel</option>
-				<option value="food">Food</option>
-				<option value="service">Service</option>
+				<% 
+				const types = ["apparel", "food", "service"];
+				for (let i=0; i<types.length; i++){
+					const selected = (info.shopType == types[i]) ? "selected" : "";
+					%> <option value= "<%= types[i] %>" <%= selected %> > <%= types[i] %></option>
+				<% } %>
 			  </select>
 		</div>
 
 		<div class="mb-3">
 			<select name="shopZone" class="form-select" aria-label="Default select example">
-				<option selected>Shop Zone</option>
-				<option value="zone 1">Zone 1</option>
-				<option value="zone 2">Zone 2</option>
-				<option value="zone 3">Zone 3</option>
+				<% 
+				const opt = ["zone 1", "zone 2", "zone 3"];
+				for (let i=0; i<opt.length; i++){
+					const selected = (info.shopZone == opt[i]) ? "selected" : "";
+					%> <option value= "<%= opt[i] %>" <%= selected %> > <%= opt[i] %></option>
+				<% } %>
 			  </select>
-		  <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
 		</div>
 		
 		<div class="mb-3">
 		  <label for="exampleInputPassword1" class="form-label">Shop Owner</label>
-		  <input type="text" name="shopOwner" class="form-control" id="exampleInputEmail1">
+		  <input type="text" value="<%= info.shopOwner %>" name="shopOwner" class="form-control" id="exampleInputEmail1">
 		</div>
 
 		<div class="mb-3">
 			<label for="exampleInputPassword1" class="form-label">Shop Contact</label>
-			<input type="text" name="shopContact" class="form-control" id="exampleInputPassword1">
+			<input type="text" value="<%= info.shopContact %>" name="shopContact" class="form-control" id="exampleInputPassword1">
 		</div>
 		
-		<div class="mb-3 form-check">
-		  <input type="checkbox" class="form-check-input" id="checkie">
-		  <label class="form-check-label" for="exampleCheck1">Check Check Check!</label>
-		</div>
-		<button id = "subButton" type="submit" class="btn btn-dark">Submit</button>
+		<button id = "subButton" type="submit" class="btn btn-dark">UPDATE</button>
 	  </form>
 	  </div>
 	  

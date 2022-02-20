@@ -17,13 +17,31 @@
 		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		  </button>
+		  <div class="collapse navbar-collapse container" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+			  <li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="http://localhost:3000">Home</a>
+			  </li>	
+			</ul>
+		  </div>
+
+		  <div class="collapse navbar-collapse container" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+			  <li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="http://localhost:3000/shops">All Shops</a>
+			  </li>	
+			</ul>
+		  </div>
 		</div>
 	  </nav>
+
+	  <p>
 	  <div class="container"> 
 		<div class="row">
 			<% for (let i=0; i<shops.length; i++) { %>
 			<div class="col-sm-4">
-			<div class="card" style="width: 15rem;">
+			<p>
+				<div class="card" style="width: 15rem;">
 				<!-- <img src="..." class="card-img-top" alt="..."> -->
 				<div class="card-body">
 				<h5 class="card-title">Shop Name : <%= shops[i].shopName %></h5>
@@ -32,11 +50,14 @@
 				<p class="card-text">Owner : <%= shops[i].shopOwner %></p>
 				<p class="card-text">Contact : <%= shops[i].shopContact %></p>
 				<!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+				<a href=<%= `http://localhost:3000/updateShop/${shops[i].shopId}` %> class="btn btn-secondary justify-content-md-" target="blank">Customize</a> <br\>
 				</div>
 			</div>
+		</p>
 			</div>
 			<% } %>
 		</div>
+	</p>
 	</div>
 
 </html>
