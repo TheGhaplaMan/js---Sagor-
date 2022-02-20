@@ -23,7 +23,11 @@ exports.getOneShop = async (req, res, next) => {
   res.status(200).json(getOneShop);
 };
 exports.updateShopInfo = async (req, res, next) => {
-  const updateShop = await Venue.findByIdAndUpdate(req.params.id, req.body);
+  console.log("aisi", req.body);
+  const updateShop = await Venue.findOneAndUpdate(
+    { shopId: req.params.shopId },
+    req.body
+  );
   res.status(200).json(updateShop);
 };
 

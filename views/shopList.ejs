@@ -50,7 +50,8 @@
 				<p class="card-text">Owner : <%= shops[i].shopOwner %></p>
 				<p class="card-text">Contact : <%= shops[i].shopContact %></p>
 				<!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-				<a href=<%= `http://localhost:3000/updateShop/${shops[i].shopId}` %> class="btn btn-secondary justify-content-md-" target="blank">Customize</a> <br\>
+				<a href=<%= `http://localhost:3000/updateShop/${shops[i].shopId}` %> class="btn btn-secondary justify-content-md-">Customize</a> <br\>
+				<button id="delButton" class="btn btn-secondary justify-content-md-">Delete</button> <br\>
 				</div>
 			</div>
 		</p>
@@ -59,5 +60,7 @@
 		</div>
 	</p>
 	</div>
+	<script src="js/script.js"></script>
+</body>
 
 </html>

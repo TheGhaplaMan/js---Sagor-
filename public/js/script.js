@@ -16,38 +16,74 @@
 // // console.log(div.textContent)
 
 const newShopForm = document.getElementById("newShop");
-newShopForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  console.log(e.target.shopName.value);
-  const shopEntry = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      shopName: e.target.shopName.value,
-      shopType: e.target.shopType.value,
-      shopZone: e.target.shopZone.value,
-      shopOwner: e.target.shopOwner.value,
-      shopContact: e.target.shopContact.value,
-    }),
-  };
+if (newShopForm) {
+  newShopForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log(e.target.shopName.value);
+    const shopEntry = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        shopName: e.target.shopName.value,
+        shopType: e.target.shopType.value,
+        shopZone: e.target.shopZone.value,
+        shopOwner: e.target.shopOwner.value,
+        shopContact: e.target.shopContact.value,
+      }),
+    };
 
-  fetch("http://localhost:3000/api/v1/venue/", shopEntry)
-    .then((res) => res.json())
-    .then((data) => {
-      if (data) {
-        window.location.href = "http://localhost:3000/shops";
-      }
-    });
-});
+    fetch("http://localhost:3000/api/v1/venue/", shopEntry)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          window.location.href = "http://localhost:3000/shops";
+        }
+      });
+  });
+}
+
+const shopUpdate = document.getElementById("updateShop");
+if (shopUpdate) {
+  shopUpdate.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log(e.target.shopName.value);
+    const shopUpdate = {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        shopName: e.target.shopName.value,
+        shopType: e.target.shopType.value,
+        shopZone: e.target.shopZone.value,
+        shopOwner: e.target.shopOwner.value,
+        shopContact: e.target.shopContact.value,
+      }),
+    };
+
+    fetch(
+      `http://localhost:3000/api/v1/venue/${
+        window.location.pathname.split("/updateShop/")[1]
+      }`,
+      shopUpdate
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          window.location.href = "http://localhost:3000/shops";
+        }
+      });
+  });
+}
 
 const disButton = document.getElementById("subButton");
-disButton.disabled = true;
+if (disButton) disButton.disabled = true;
 
 const checkBox = document.getElementById("checkie");
-checkBox.addEventListener("change", (e) => {
-  if (e.target.checked) {
-    disButton.disabled = false;
-  } else {
-    disButton.disabled = true;
-  }
-});
+if (checkBox) {
+  checkBox.addEventListener("change", (e) => {
+    if (e.target.checked) {
+      disButton.disabled = false;
+    } else {
+      disButton.disabled = true;
+    }
+  });
+}
