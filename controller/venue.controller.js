@@ -32,6 +32,6 @@ exports.updateShopInfo = async (req, res, next) => {
 };
 
 exports.dltShop = async (req, res, next) => {
-  const dltShop = await Venue.findByIdAndDelete(req.params.id);
+  const dltShop = await Venue.findOneAndDelete({ shopId: req.params.id });
   res.status(200).json(dltShop);
 };

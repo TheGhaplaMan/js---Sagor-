@@ -74,6 +74,21 @@ if (shopUpdate) {
   });
 }
 
+function shopDlt(id) {
+  const dltShop = {
+    method: "DELETE",
+  };
+  console.log(id, "vung vang");
+
+  fetch(`http://localhost:3000/api/v1/venue/${id}`, dltShop)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data) {
+        window.location.href = "http://localhost:3000/shops";
+      }
+    });
+}
+
 const disButton = document.getElementById("subButton");
 if (disButton) disButton.disabled = true;
 
