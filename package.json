@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/TheGhaplaMan/js---Sagor-#readme",
   "dependencies": {
+    "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.2",
     "mongodb": "^4.3.1",
@@ -28,7 +29,6 @@
   "devDependencies": {
     "nodemon": "^2.0.15"
   },
-
   "engines": {
     "node": "16.x"
   }

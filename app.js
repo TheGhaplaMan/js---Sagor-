@@ -3,9 +3,14 @@ const mongoose = require("mongoose");
 const ejs = require("ejs");
 const path = require("path");
 const app = express();
-const port = 3000;
-const url =
-  "mongodb+srv://TheGhaplaMan:Lu Yb Tm@cluster0.pnyuc.mongodb.net/dbNami?retryWrites=true&w=majority";
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
+
+const port = process.env.PORT;
+const url = process.env.DBURL;
+// const port = 3000;
+// const url =
+//   "mongodb+srv://TheGhaplaMan:Lu Yb Tm@cluster0.pnyuc.mongodb.net/dbNami?retryWrites=true&w=majority";
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
