@@ -32,11 +32,11 @@ if (newShopForm) {
       }),
     };
 
-    fetch("http://localhost:3000/api/v1/venue/", shopEntry)
+    fetch(`${window.location.origin}/api/v1/venue/`, shopEntry)
       .then((res) => res.json())
       .then((data) => {
         if (data) {
-          window.location.href = "http://localhost:3000/shops";
+          window.location.href = `${window.location.origin}/shops`;
         }
       });
   });
@@ -60,7 +60,7 @@ if (shopUpdate) {
     };
 
     fetch(
-      `http://localhost:3000/api/v1/venue/${
+      `${window.location.origin}/api/v1/venue/${
         window.location.pathname.split("/updateShop/")[1]
       }`,
       shopUpdate
@@ -68,7 +68,7 @@ if (shopUpdate) {
       .then((res) => res.json())
       .then((data) => {
         if (data) {
-          window.location.href = "http://localhost:3000/shops";
+          window.location.href = `${window.location.origin}/shops`;
         }
       });
   });
@@ -80,11 +80,11 @@ function shopDlt(id) {
   };
   console.log(id, "vung vang");
 
-  fetch(`http://localhost:3000/api/v1/venue/${id}`, dltShop)
+  fetch(`${window.location.origin}/api/v1/venue/${id}`, dltShop)
     .then((res) => res.json())
     .then((data) => {
       if (data) {
-        window.location.href = "http://localhost:3000/shops";
+        window.location.href = `${window.location.origin}/shops`;
       }
     });
 }
