@@ -31,6 +31,6 @@ app.use("/", viewRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/venue", venueRouter);
 
-app.listen(port, "0.0.0.0", () => {
+app.listen(port, () => {
   console.log("shuni");
 });
