@@ -6,7 +6,7 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const url = process.env.DBURL;
 // const port = 3000;
 // const url =
