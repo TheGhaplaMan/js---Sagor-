@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   },
   ticketOwned: {
     type: Boolean,
-    required: true,
+    default: false,
     validate: {
       validator: function (val) {
         if (val != true) {
@@ -20,13 +20,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  contact: {
+  userContact: {
     type: String,
     required: true,
     maxlength: 11,
     minlength: 11,
   },
-  email: {
+  userEmail: {
     type: String,
     required: true,
     lowercase: true,

@@ -24,3 +24,7 @@ exports.dltOne = async (req, res, next) => {
   const dltOne = await User.findByIdAndDelete(req.params.id); //dynamic api
   res.status(200).json(dltOne);
 };
+
+exports.signUp = async (req, res, next) => {};
+
+exports.login = async (req, res, next) => {};

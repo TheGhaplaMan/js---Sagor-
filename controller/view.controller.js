@@ -1,3 +1,4 @@
+const User = require("../model/user.model");
 const Venue = require("../model/venue.model");
 
 exports.homePage = (req, res) => {
@@ -19,4 +20,13 @@ exports.shopList = async (req, res) => {
   res.render("shopList", {
     shops: allShops,
   });
+};
+
+//for users
+exports.login = async (req, res) => {
+  res.render("login");
+};
+
+exports.signup = async (req, res) => {
+  res.render("signUp");
 };
