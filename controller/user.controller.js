@@ -25,6 +25,13 @@ exports.dltOne = async (req, res, next) => {
   res.status(200).json(dltOne);
 };
 
-exports.signUp = async (req, res, next) => {};
+exports.signUp = async (req, res, next) => {
+  const { userName, pass } = req.body;
+  //finding user
+  let founduser = await User.findOne({ userName: userName });
+  if (founduser) {
+    return res(403).json("Already ase bhai");
+  }
+};
 
 exports.login = async (req, res, next) => {};

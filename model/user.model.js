@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     maxlength: 11,
     minlength: 11,
   },
-  userEmail: {
+  email: {
     type: String,
     required: true,
     lowercase: true,
@@ -43,7 +43,10 @@ const userSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  password: String,
+  pass: {
+    type: String,
+    required: true,
+  },
 });
 
 const User = mongoose.model("User", userSchema);
