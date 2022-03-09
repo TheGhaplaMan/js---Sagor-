@@ -1,4 +1,18 @@
+const bcrypt = require("bcryptjs");
 const User = require("../model/user.model");
+const jwt = require("jsonwebtoken");
+
+function genToken(user) {
+  return jwt.sign(
+    {
+      id: user._id,
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "1m",
+    }
+  );
+}
 
 exports.createUser = async (req, res, next) => {
   const newUser = await User.create(req.body);
@@ -26,12 +40,44 @@ exports.dltOne = async (req, res, next) => {
 };
 
 exports.signUp = async (req, res, next) => {
-  const { userName, pass } = req.body;
+  const { userName, email, pass, userContact } = req.body;
   //finding user
-  let founduser = await User.findOne({ userName: userName });
+  let founduser = await User.findOne({
+    $or: [{ userName: userName }, { email: email }],
+  });
   if (founduser) {
-    return res(403).json("Already ase bhai");
+    return res.status(403).json({ message: "Already ase bhai" });
   }
+
+  const passHash = await bcrypt.hash(pass, 12);
+
+  const newUser = await User.create({
+    userName: userName,
+    email: email,
+    userContact: userContact,
+    pass: passHash,
+  });
+
+  res.status(200).json({ status: "success", message: "Done. Login now." });
 };
 
-exports.login = async (req, res, next) => {};
+exports.login = async (req, res, next) => {
+  const { userName, pass } = req.body;
+
+  //finding user
+
+  let userFound = await User.findOne({ userName: userName });
+
+  if (!userFound) {
+    return res.status(404).json({ status: "error", message: "User nai" });
+  }
+
+  if (!(await bcrypt.compare(pass, userFound.pass))) {
+    return res
+      .status(403)
+      .json({ status: "error", message: "ghapla ase kothao" });
+  }
+  userFound.pass = undefined;
+  const token = genToken(userFound);
+  res.status(200).json({ status: "success", token, userData: userFound });
+};

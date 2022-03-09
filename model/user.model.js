@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
   ticketId: {
     type: String,
-    required: true,
   },
   ticketOwned: {
     type: Boolean,
@@ -41,7 +40,6 @@ const userSchema = new mongoose.Schema({
   },
   entryAt: {
     type: Date,
-    required: true,
   },
   pass: {
     type: String,
