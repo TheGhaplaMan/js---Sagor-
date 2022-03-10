@@ -32,28 +32,30 @@
           <div class="container">   
       </nav>
     
-      <form>
+      <form id="newUser">
         <div class="mb-3">
           <label for="userName" class="form-label">Username</label>
-          <input type="text" name ="userName"  class="form-control" id="userName" aria-describedby="emailHelp">
+          <input type="text" name ="userName"  class="form-control" id="userName" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Email</label>
-          <input type="email" name="userEmail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="email" name="userEmail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
           <label for="userContact" class="form-label">Contact</label>
-          <input type="text" name="userContact" class="form-control" id="userContact" aria-describedby="emailHelp">
+          <input type="text" name="userContact" class="form-control" id="userContact" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" name="userPass" class="form-control" id="exampleInputPassword1">
+          <input type="password" name="userPass" class="form-control" id="exampleInputPassword1" required>
         </div>
         <div class="mb-3">
           <label for="confirmPass" class="form-label">Confirm Password</label>
-          <input type="password" name="passConfirm" class="form-control" id="confirmPass">
+          <input type="password" name="passConfirm" class="form-control" id="confirmPass" required>
         </div>
-        <button type="submit" class="btn btn-dark">Sign Up</button>
+        <button id="signUpButton" type="submit" class="btn btn-dark">Sign Up</button>
       </form>
+
+      <script src="/js/userAuth.js"></script>
 </body>
 </html>

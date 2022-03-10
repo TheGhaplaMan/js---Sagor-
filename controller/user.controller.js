@@ -46,7 +46,9 @@ exports.signUp = async (req, res, next) => {
     $or: [{ userName: userName }, { email: email }],
   });
   if (founduser) {
-    return res.status(403).json({ message: "Already ase bhai" });
+    return res
+      .status(403)
+      .json({ status: "error", message: "Already ase bhai" });
   }
 
   const passHash = await bcrypt.hash(pass, 12);
