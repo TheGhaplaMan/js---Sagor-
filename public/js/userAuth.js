@@ -54,7 +54,7 @@ if (login) {
           alert(data.message);
         }
         if (data.status == "success") {
-          window.location.href = `${window.location.origin}/`;
+          window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
           console.log(data);
           localStorage.setItem("token", data.token);
         }
