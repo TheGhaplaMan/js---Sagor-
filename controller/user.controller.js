@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const User = require("../model/user.model");
 const jwt = require("jsonwebtoken");
+const { promisify } = require("util");
 
 function genToken(user) {
   return jwt.sign(
@@ -9,7 +10,7 @@ function genToken(user) {
     },
     process.env.JWT_SECRET,
     {
-      expiresIn: "1m",
+      expiresIn: "10m",
     }
   );
 }
@@ -83,3 +84,37 @@ exports.login = async (req, res, next) => {
   const token = genToken(userFound);
   res.status(200).json({ status: "success", token, userData: userFound });
 };
+
+exports.protect = async (req, res, next) => {
+  //verifying token existence
+  let token;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    token = req.headers.authorization.split(" ")[1];
+  }
+
+  if (!token) {
+    return res
+      .status(401)
+      .json({ status: "error", message: "Not logged in yet" });
+  }
+
+  //verifying token
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
+  //checking user
+  const currentUser = await User.findById(decoded.id);
+  if (!currentUser) {
+    return res
+      .status(404)
+      .json({ status: "error", message: "user paoa jay nai" });
+  }
+
+  req.user = currentUser;
+  res.locals.user = currentUser;
+  next();
+};
+
+exports.protectView = async (req, res, next) => {};

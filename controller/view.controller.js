@@ -30,3 +30,10 @@ exports.login = async (req, res) => {
 exports.signup = async (req, res) => {
   res.render("signUp");
 };
+
+exports.redirectToLogin = async (req, res) => {
+  if (!req.user) {
+    res.redirect("/login");
+  }
+  next();
+};
