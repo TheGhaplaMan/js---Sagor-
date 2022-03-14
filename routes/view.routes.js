@@ -5,22 +5,11 @@ const userController = require("../controller/user.controller");
 const router = express.Router();
 
 router.get("/", viewController.homePage);
-router.get(
-  "/newShop",
-  userController.protect,
-  viewController.redirectToLogin,
-  viewController.newShop
-);
-router.get(
-  "/shops",
-  userController.protect,
-  viewController.redirectToLogin,
-  viewController.shopList
-);
+router.get("/newShop", userController.protectView, viewController.newShop);
+router.get("/shops", userController.protectView, viewController.shopList);
 router.get(
   "/updateshop/:id",
-  userController.protect,
-  viewController.redirectToLogin,
+  userController.protectView,
   viewController.updateShop
 );
 

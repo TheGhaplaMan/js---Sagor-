@@ -2,6 +2,8 @@ const bcrypt = require("bcryptjs");
 const User = require("../model/user.model");
 const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
+const { cookie } = require("express/lib/response");
+const Email = require("../utils/email");
 
 function genToken(user) {
   return jwt.sign(
@@ -10,7 +12,7 @@ function genToken(user) {
     },
     process.env.JWT_SECRET,
     {
-      expiresIn: "10m",
+      expiresIn: "3m",
     }
   );
 }
@@ -61,6 +63,7 @@ exports.signUp = async (req, res, next) => {
     pass: passHash,
   });
 
+  await new Email(newUser).send("welcome", "The Subject Lol");
   res.status(200).json({ status: "success", message: "Done. Login now." });
 };
 
@@ -82,6 +85,10 @@ exports.login = async (req, res, next) => {
   }
   userFound.pass = undefined;
   const token = genToken(userFound);
+
+  res.cookie("jwt", token, {
+    httpOnly: true,
+  });
   res.status(200).json({ status: "success", token, userData: userFound });
 };
 
@@ -117,4 +124,29 @@ exports.protect = async (req, res, next) => {
   next();
 };
 
-exports.protectView = async (req, res, next) => {};
+exports.protectView = async (req, res, next) => {
+  //verifying token existence
+  let token;
+  if (req.cookies.jwt) {
+    token = req.cookies.jwt;
+  }
+
+  if (!token) {
+    return res.redirect("/login");
+  }
+
+  //verifying token
+  let decoded;
+  try {
+    decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  } catch (err) {
+    return res.redirect("/login");
+  }
+  //checking user
+  const currentUser = await User.findById(decoded.id);
+  if (!currentUser) {
+    return res.redirect("/login");
+  }
+
+  next();
+};

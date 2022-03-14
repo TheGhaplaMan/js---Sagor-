@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const ejs = require("ejs");
 const path = require("path");
 const app = express();
+const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 
@@ -25,6 +26,7 @@ const venueRouter = require("./routes/venue.routes");
 const viewRouter = require("./routes/view.routes");
 
 app.use(express.json()); //converts all input from GET into json format
+app.use(cookieParser());
 
 app.use("/", viewRouter);
 
