@@ -4,8 +4,10 @@
   "description": "New project again",
   "main": "shuru.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
+    "start": "node learning/app.js",
+    "ecs" : "node ECProject/voter.app.js",
+    "dev": "nodemon ./learning/app.js",
+    "ecd": "nodemon ./ECProject/voter.app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

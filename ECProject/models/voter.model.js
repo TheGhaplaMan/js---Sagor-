@@ -1,0 +1,54 @@
+const mongoose = require("mongoose");
+
+const voterSchema = new mongoose.Schema({
+  voterName: {
+    type: String,
+    required: true,
+  },
+  voterNID: {
+    type: String,
+    required: true,
+  },
+  voterContact: {
+    type: String,
+    required: true,
+    maxlength: 11,
+    minlength: 11,
+    validate: {
+      validator: function (val) {
+        if (!val.startsWith("01")) {
+          return false;
+        }
+        return true;
+      },
+    },
+  },
+  voterDOB: {
+    type: Date,
+    required: true,
+  },
+  voterAddress: {
+    thana: String,
+    district: String,
+    zip: Number,
+    division: String,
+    required: true,
+  },
+  voterImage: {
+    type: Buffer,
+    required: true,
+  },
+  voteStatus: {
+    status: {
+      type: Boolean,
+      required: true,
+    },
+    voteDate: Date,
+  },
+  centerId: {
+    type: mongoose.Types.ObjectId,
+  },
+});
+
+const Voter = mongoose.model("Voter", voterSchema);
+module.exports = Voter;
