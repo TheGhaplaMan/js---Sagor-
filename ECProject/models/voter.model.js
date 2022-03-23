@@ -23,6 +23,19 @@ const voterSchema = new mongoose.Schema({
       },
     },
   },
+  email: {
+    type: String,
+    required: true,
+    lowercase: true,
+    validate: {
+      validator: function (val) {
+        if (val.includes("@") && val.includes(".")) {
+          return true;
+        }
+        return false;
+      },
+    },
+  },
   voterDOB: {
     type: Date,
     required: true,
