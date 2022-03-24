@@ -4,13 +4,14 @@ const centerSchema = mongoose.Schema({
   candidates: [
     {
       candidateName: String,
-      voteReceived: Number,
+      voteReceived: {
+        type: Number,
+        default: 0,
+      },
     },
   ],
-  totalVote: Number,
-  adminId: {
-    type: mongoose.Types.ObjectId,
-    required: true,
+  totalVote: {
+    type: Number,
   },
 });
 

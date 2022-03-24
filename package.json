@@ -4,8 +4,8 @@
   "description": "New project again",
   "main": "shuru.js",
   "scripts": {
-    "start": "node learning/app.js",
-    "ecs" : "node ECProject/voter.app.js",
+    "learning": "node learning/app.js",
+    "start" : "node ECProject/voter.app.js",
     "dev": "nodemon ./learning/app.js",
     "ecd": "nodemon ./ECProject/voter.app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
