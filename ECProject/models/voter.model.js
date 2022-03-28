@@ -12,7 +12,7 @@ const voterSchema = new mongoose.Schema({
   voterContact: {
     type: String,
     required: true,
-    maxlength: 11,
+    maxlength: 14,
     minlength: 11,
     validate: {
       validator: function (val) {
@@ -45,10 +45,9 @@ const voterSchema = new mongoose.Schema({
     district: String,
     zip: Number,
     division: String,
-    required: true,
   },
   voterImage: {
-    type: Buffer,
+    type: String,
     required: true,
   },
   voteStatus: {

@@ -1,23 +1,31 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const path = require("path");
 const app = express();
+const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 dotenv.config({ path: "./ECProject/config.env" });
 
 const port = process.env.PORT || 3000;
-const ecpUrl = process.env.DBURL;
-console.log(process.env.PORT);
+const url = process.env.DBURL;
 
-mongoose.connect(ecpUrl).then(() => {
-  console.log("Mongoose paisi");
-});
+app.use(express.static(path.join(__dirname, "public")));
+console.log(path.join(__dirname, "public"));
 
-app.listen(port, () => {
-  console.log("project pardeee");
+mongoose.connect(url).then(() => {
+  console.log("Paisi DB");
 });
 
 const centerRouter = require("./routes/center.routes");
+const adminRouter = require("./routes/admin.routes");
+const voterRouter = require("./routes/voter.routes");
 
 app.use(express.json());
 
+app.use("/api/v1/voter", voterRouter);
 app.use("/api/v1/center", centerRouter);
+app.use("/api/v1/admin", adminRouter);
+
+app.listen(port, () => {
+  console.log("shunbooooo");
+});

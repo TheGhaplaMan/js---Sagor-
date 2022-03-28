@@ -1,9 +1,8 @@
 const bcrypt = require("bcryptjs");
-const User = require("../model/voter.model");
+const Admin = require("../models/admin.model");
 const jwt = require("jsonwebtoken");
-const { promisify } = require("util");
-const { cookie } = require("express/lib/response");
 const Email = require("../utils/email");
+const { model, Types } = require("mongoose");
 
 function genToken(user) {
   return jwt.sign(
@@ -12,16 +11,16 @@ function genToken(user) {
     },
     process.env.JWT_SECRET,
     {
-      expiresIn: "3m",
+      expiresIn: "1d",
     }
   );
 }
 
-exports.createUser = async (req, res, next) => {
-  const { email, pass, userName, cent } = req.body;
+exports.createAdmin = async (req, res, next) => {
+  const { email, centerId, pass } = req.body;
   //finding user
-  let founduser = await User.findOne({
-    $or: [{ centerId: userName }, { email: email }],
+  let founduser = await Admin.findOne({
+    $or: [{ centerId: Types.ObjectId(centerId) }, { email: email }],
   });
   if (founduser) {
     return res
@@ -31,18 +30,15 @@ exports.createUser = async (req, res, next) => {
 
   const passHash = await bcrypt.hash(pass, 12);
 
-  const newUser = await User.create({
-    userName: userName,
-    email: email,
-    userContact: userContact,
-    pass: passHash,
-  });
+  const newAdmin = await Admin.create({ ...req.body, pass: passHash });
 
-  await new Email(newUser).send("welcome", "The Subject Lol");
-  res.status(200).json({ status: "success", message: "Done. Login now." });
+  // await new Email(newAdmin).send("welcome", "The Subject Lol");
+  res
+    .status(200)
+    .json({ status: "success", message: "Done. Login now.", data: newAdmin });
 };
 
-exports.login = async (req, req, next) => {
+exports.login = async (req, res, next) => {
   const { email, pass } = req.body;
 
   //finding user
@@ -61,8 +57,7 @@ exports.login = async (req, req, next) => {
   userFound.pass = undefined;
   const token = genToken(userFound);
 
-  res.cookie("jwt", token, {
-    httpOnly: true,
-  });
   res.status(200).json({ status: "success", token, userData: userFound });
 };
+
+model.exports = Admin;

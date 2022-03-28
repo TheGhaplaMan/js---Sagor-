@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const centerSchema = mongoose.Schema({
+  centerName: {
+    type: String,
+    required: true,
+  },
   candidates: [
     {
       candidateName: String,

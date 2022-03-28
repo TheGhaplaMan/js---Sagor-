@@ -3,8 +3,8 @@ const centerController = require("../controller/center.controller");
 
 const router = express.Router();
 
-router.post("/", centerController.createCenter);
-router.get("/", centerController.getAllCenter);
+router.post("/newCenter", centerController.createCenter);
+router.get("/centers", centerController.getAllCenter);
 router.patch("/:centerId", centerController.updateCenterInfo);
 router.delete("/:id", centerController.dltCenter);
 
