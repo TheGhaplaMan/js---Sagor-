@@ -10,7 +10,6 @@ const port = process.env.PORT || 3000;
 const url = process.env.DBURL;
 
 app.use(express.static(path.join(__dirname, "public")));
-console.log(path.join(__dirname, "public"));
 
 mongoose.connect(url).then(() => {
   console.log("Paisi DB");
