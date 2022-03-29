@@ -3,11 +3,9 @@ const { htmlToText } = require("html-to-text");
 const ejs = require("ejs");
 
 module.exports = class Email {
-  constructor(user, url) {
-    this.to = user.email;
-    this.firstName = user.userName.split(" ")[0];
-    this.url = url;
-    this.from = `Adit Bhai <apagla988@gmail.com>`;
+  constructor(email) {
+    this.to = email;
+    this.from = `Election Commission <electioncommbd@gmail.com>`;
   }
   newTransport() {
     return nodemailer.createTransport({
@@ -19,14 +17,21 @@ module.exports = class Email {
     });
   }
 
-  async send(template, subject) {
-    const html = await ejs.renderFile(
-      `${__dirname}/../views/email/${template}.ejs`,
-      {
-        firstName: this.firstName,
-        subject,
-      }
-    );
+  async send(OTP, subject) {
+    const html = `
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${subject}</title>
+  </head>
+  <body>
+    <p>Dear Voter,</p>
+    <p>Your OTP is : ${OTP}</p>
+  </body>
+</html>`;
 
     const mailOptions = {
       from: this.from,

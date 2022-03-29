@@ -57,6 +57,7 @@ const voterSchema = new mongoose.Schema({
     },
     voteDate: Date,
   },
+  otpHash: String,
   centerId: {
     type: mongoose.Types.ObjectId,
   },
