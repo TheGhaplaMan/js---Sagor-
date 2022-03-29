@@ -10,6 +10,11 @@ exports.getAllCenter = async (req, res, next) => {
   res.status(200).json(getAllCenter);
 };
 
+exports.getOneCenter = async (req, res, next) => {
+  const getAllCenter = await Center.findById(req.params.centerId);
+  res.status(200).json(getAllCenter);
+};
+
 exports.updateCenterInfo = async (req, res, next) => {
   console.log("paisi sob", req.body);
   const updateCenterInfo = await Center.findOneAndUpdate(
