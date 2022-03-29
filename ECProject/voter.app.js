@@ -7,7 +7,7 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./ECProject/config.env" });
 
 const port = process.env.PORT || 3000;
-const url = process.env.DBURL;
+const url = process.env.EC_DBURL;
 
 app.use(express.static(path.join(__dirname, "public")));
 
