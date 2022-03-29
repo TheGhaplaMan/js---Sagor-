@@ -43,21 +43,21 @@ exports.login = async (req, res, next) => {
 
   //finding user
 
-  let userFound = await User.findOne({ userName: userName });
+  let adminFound = await Admin.findOne({ email: email });
 
-  if (!userFound) {
+  if (!adminFound) {
     return res.status(404).json({ status: "error", message: "User nai" });
   }
 
-  if (!(await bcrypt.compare(pass, userFound.pass))) {
+  if (!(await bcrypt.compare(pass, adminFound.pass))) {
     return res
       .status(403)
       .json({ status: "error", message: "ghapla ase kothao" });
   }
-  userFound.pass = undefined;
-  const token = genToken(userFound);
+  adminFound.pass = undefined;
+  const token = genToken(adminFound);
 
-  res.status(200).json({ status: "success", token, userData: userFound });
+  res.status(200).json({ status: "success", token, userData: adminFound });
 };
 
 model.exports = Admin;
