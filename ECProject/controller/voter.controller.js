@@ -5,6 +5,9 @@ const Email = require("../utils/email");
 const multer = require("multer");
 const { Types } = require("mongoose");
 const bcrypt = require("bcryptjs");
+const Admin = require("../models/admin.model");
+const Center = require("../models/center.model");
+const { candidateQR } = require("./center.controller");
 
 function genToken(user) {
   return jwt.sign(
@@ -40,17 +43,38 @@ exports.createVoter = async (req, res, next) => {
   res.status(200).json(newVoter);
 };
 
-exports.getAllVoters = async (req, res, next) => {
-  const getAllVoters = await Voter.find();
-  res.status(200).json(getAllVoters);
+exports.getVotersInCenter = async (req, res, next) => {
+  const voters = await Voter.find({ centerId: req.params.centerId });
+  res.status(200).json({
+    status: "success",
+    voters,
+    message: "All Voters from this Center",
+  });
 };
 
-exports.getOneVoter = async (req, res, next) => {
-  const getOneVoter = await Voter.findbyId(req.params.id);
-  res.status(200).json(getOneVoter);
-};
+//TODO: send res to admin
+exports.verifyVoter = async (req, res, next) => {
+  const voter = await Voter.findbyId(req.user._id);
 
-exports.hasVoted = async (req, res, next) => {};
+  if (req.body.centerId != voter.centerId.toString()) {
+    return res
+      .status(400)
+      .json({ status: "error", message: "Voter is not from this center" });
+  }
+
+  if (voter.voteStatus.status == true) {
+    return res.status(400).json({
+      status: "error",
+      message: "Voter has already voted on " + voter.voteStatus.voteDate,
+    });
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: voter,
+    message: "You may proceed to Vote",
+  }); //response vul jaygay jaitese
+};
 
 exports.login = async (req, res, next) => {
   const { voterNID, email } = req.body;
@@ -91,4 +115,55 @@ exports.otpVerify = async (req, res, next) => {
 
   const token = genToken(voterFound);
   res.status(200).json({ status: "success", token, userData: voterFound });
+};
+
+//TODO: res main jaygay pathano baki
+exports.hasVoted = async (req, res, next) => {
+  const centerid = req.user.centerId;
+  const candidateId = req.body.candidateId;
+  const voterId = req.user._id;
+
+  const updateVoteStatus = await Voter.findByIdAndUpdate(voterId, {
+    voteStatus: {
+      status: true,
+      voteDate: new Date(Date.now()),
+    },
+  });
+
+  const candidateVoteUpdate = await Center.findByIdAndUpdate(candidateId, {
+    candidates: {
+      voteRecievd: voteRecievd++,
+    },
+  });
+};
+
+exports.protect = async (req, res, next) => {
+  //verifying token existence
+  let token;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    token = req.headers.authorization.split(" ")[1];
+  }
+
+  if (!token) {
+    return res
+      .status(401)
+      .json({ status: "error", message: "Not logged in yet" });
+  }
+
+  //verifying token
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
+  //checking user
+  const currentUser = await Voter.findById(decoded.id);
+  if (!currentUser) {
+    return res
+      .status(404)
+      .json({ status: "error", message: "User Does Not Exist" });
+  }
+
+  req.user = currentUser;
+  next();
 };

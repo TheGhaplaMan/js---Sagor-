@@ -2,53 +2,30 @@ const Center = require("../models/center.model");
 const { promisify } = require("util");
 const qrCode = require("qrcode");
 
-// exports.createCenter = async (req, res, next) => {
-//   const newCenter = await Center.create(req.body);
-
-//   // let qrGen; // callback function dia
-//   // QRCode.toDataURL("I am a pony!", function (err, url) {
-//   //   console.log(url);
-//   //   qrGen = url;
-//   // });
-
-//   //promise use koira
-//   const qrGen = await promisify(qrCode.toDataURL)(newCenter._id.toString());
-//   newCenter.centerQR = qrGen;
-
-//   newCenter.candidates.forEach(async (candidate, i) => {
-//     const candidateQRGen = await promisify(qrCode.toDataURL)(
-//       candidate._id.toString()
-//     );
-//     candidate.candidateQR = candidateQRGen;
-//     newCenter.markModified("candidates." + i);
-//     candidate.markModified("candidateQR");
-//   });
-
-//   newCenter.markModified("candidates");
-//   const upDatedCenter = await newCenter.save();
-
-//   res.status(201).json(upDatedCenter);
-// };
-
-//whatsapp
-const async = require("async");
-
 exports.createCenter = async (req, res, next) => {
   const newCenter = await Center.create(req.body);
 
+  // let qrGen; // callback function dia
+  // QRCode.toDataURL("I am a pony!", function (err, url) {
+  //   console.log(url);
+  //   qrGen = url;
+  // });
+
+  //promise use koira
   const qrGen = await promisify(qrCode.toDataURL)(newCenter._id.toString());
   newCenter.centerQR = qrGen;
 
-  async.eachSeries(newCenter.candidates, async (candidate, done) => {
+  for (const candidate of newCenter.candidates) {
     const candidateQRGen = await promisify(qrCode.toDataURL)(
       candidate._id.toString()
     );
     candidate.candidateQR = candidateQRGen;
-    newCenter.markModified("candidates");
-    await newCenter.save(done);
-  });
+  }
 
-  res.status(201).json(newCenter);
+  newCenter.markModified("candidates");
+  const upDatedCenter = await newCenter.save();
+
+  res.status(201).json(upDatedCenter);
 };
 
 exports.getAllCenter = async (req, res, next) => {

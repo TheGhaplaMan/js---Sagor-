@@ -53,7 +53,7 @@ const voterSchema = new mongoose.Schema({
   voteStatus: {
     status: {
       type: Boolean,
-      required: true,
+      default: false,
     },
     voteDate: Date,
   },
