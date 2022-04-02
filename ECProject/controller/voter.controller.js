@@ -130,9 +130,9 @@ exports.hasVoted = async (req, res, next) => {
     },
   });
 
-  const candidateVoteUpdate = await Center.findByIdAndUpdate(candidateId, {
+  const candidateVoteUpdate = await Center.findByIdAndUpdate(centerid, {
     candidates: {
-      voteRecievd: voteRecievd++,
+      voteReceived: voteRecieved++,
     },
   });
 };
