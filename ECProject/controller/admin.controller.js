@@ -45,11 +45,16 @@ exports.createAdmin = async (req, res, next) => {
 
   const qrGen = await promisify(qrCode.toDataURL)(newAdmin._id.toString());
   newAdmin.adminQR = qrGen;
+  const upDatedAdmin = await newAdmin.save();
 
   // await new Email(newAdmin).send("welcome", "The Subject Lol");
   res
     .status(200)
-    .json({ status: "success", message: "Done. Login now.", data: newAdmin });
+    .json({
+      status: "success",
+      message: "Done. Login now.",
+      data: upDatedAdmin,
+    });
 };
 
 exports.login = async (req, res, next) => {
