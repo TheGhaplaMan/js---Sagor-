@@ -22,6 +22,11 @@ const adminSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  adminQR: String,
+  roomNumber: {
+    type: Number,
+    required: true,
+  },
   totalVoter: Number,
   centerId: {
     type: mongoose.Types.ObjectId,

@@ -22,7 +22,6 @@ const centerSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
-  centerQR: String,
 });
 
 const Center = mongoose.model("Center", centerSchema);

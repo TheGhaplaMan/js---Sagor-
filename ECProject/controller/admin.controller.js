@@ -2,6 +2,8 @@ const bcrypt = require("bcryptjs");
 const Admin = require("../models/admin.model");
 const jwt = require("jsonwebtoken");
 const Email = require("../utils/email");
+const { promisify } = require("util");
+const qrCode = require("qrcode");
 const { model, Types } = require("mongoose");
 
 function genToken(user) {
@@ -17,20 +19,32 @@ function genToken(user) {
 }
 
 exports.createAdmin = async (req, res, next) => {
-  const { email, centerId, pass } = req.body;
+  const { email, pass, roomNumber, centerId } = req.body;
   //finding user
-  let founduser = await Admin.findOne({
-    $or: [{ centerId: Types.ObjectId(centerId) }, { email: email }],
+  let foundAdmin = await Admin.findOne({
+    $or: [
+      { email: email },
+      {
+        $and: [
+          { roomNumber: roomNumber },
+          { centerId: Types.ObjectId(centerId) },
+        ],
+      },
+    ],
   });
-  if (founduser) {
+  console.log(req.body.roomNumber);
+  if (foundAdmin) {
     return res
       .status(403)
-      .json({ status: "error", message: "Already ase bhai" });
+      .json({ status: "error", message: "Admin already exists" });
   }
 
   const passHash = await bcrypt.hash(pass, 12);
 
   const newAdmin = await Admin.create({ ...req.body, pass: passHash });
+
+  const qrGen = await promisify(qrCode.toDataURL)(newAdmin._id.toString());
+  newAdmin.adminQR = qrGen;
 
   // await new Email(newAdmin).send("welcome", "The Subject Lol");
   res

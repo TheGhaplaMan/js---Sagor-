@@ -34,8 +34,8 @@ exports.getAllCenter = async (req, res, next) => {
 };
 
 exports.getOneCenter = async (req, res, next) => {
-  const getAllCenter = await Center.findById(req.params.centerId);
-  res.status(200).json(getAllCenter);
+  const getCenter = await Center.findById(req.params.centerId);
+  res.status(200).json(getCenter);
 };
 
 exports.updateCenterInfo = async (req, res, next) => {

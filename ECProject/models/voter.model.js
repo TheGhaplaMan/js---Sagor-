@@ -61,6 +61,9 @@ const voterSchema = new mongoose.Schema({
   centerId: {
     type: mongoose.Types.ObjectId,
   },
+  adminId: {
+    type: mongoose.Types.ObjectId,
+  },
 });
 
 const Voter = mongoose.model("Voter", voterSchema);

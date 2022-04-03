@@ -8,6 +8,7 @@ const bcrypt = require("bcryptjs");
 const Admin = require("../models/admin.model");
 const Center = require("../models/center.model");
 const { candidateQR } = require("./center.controller");
+const { findById } = require("../models/voter.model");
 
 function genToken(user) {
   return jwt.sign(
@@ -34,11 +35,22 @@ const upload = multer({ storage: storage });
 exports.upImage = upload.single("voterImage");
 
 exports.createVoter = async (req, res, next) => {
-  console.log(req.file);
+  const { email, voterContact } = req.body;
+  //finding user
+  let foundVoter = await Voter.findOne({
+    $and: [{ email: email, voterContact: voterContact }],
+  });
+  if (foundVoter) {
+    return res
+      .status(403)
+      .json({ status: "error", message: "Already ase bhai" });
+  }
+
   const newVoter = await Voter.create({
     ...req.body,
     voterImage: `img/${req.file.originalname}`,
     centerId: Types.ObjectId(req.body.centerId),
+    adminId: Types.ObjectId(req.body.adminId),
   });
   res.status(200).json(newVoter);
 };
@@ -66,6 +78,15 @@ exports.verifyVoter = async (req, res, next) => {
     return res.status(400).json({
       status: "error",
       message: "Voter has already voted on " + voter.voteStatus.voteDate,
+    });
+  }
+
+  const admin = await Admin.findOne({ adminId: voter.adminId });
+
+  if (req.body.adminId != voter.adminId.toString()) {
+    return res.status(400).json({
+      status: "error",
+      message: "Incorrect Room. The correct room is " + admin.roomNumber,
     });
   }
 
