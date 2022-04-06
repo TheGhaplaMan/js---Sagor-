@@ -6,13 +6,29 @@ const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 dotenv.config({ path: "./ECProject/config.env" });
 
-const port = process.env.PORT || 3000;
+const http = require("http");
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server, {
+  cors: {
+    origin: ["http://localhost:3000"],
+  },
+});
+
+const port = process.env.PORT || 4000;
 const url = process.env.EC_DBURL;
 
 app.use(express.static(path.join(__dirname, "public")));
 
 mongoose.connect(url).then(() => {
   console.log("Paisi DB");
+});
+
+io.on("connection", (socket) => {
+  console.log("user connected");
+  // socket.on("chat message", (msg) => {
+  //   io.emit("chat message", msg);
+  // });
 });
 
 const centerRouter = require("./routes/center.routes");
@@ -25,6 +41,6 @@ app.use("/api/v1/voter", voterRouter);
 app.use("/api/v1/center", centerRouter);
 app.use("/api/v1/admin", adminRouter);
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log("shunbooooo");
 });
