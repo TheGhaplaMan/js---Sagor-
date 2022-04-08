@@ -7,8 +7,7 @@ const { Types } = require("mongoose");
 const bcrypt = require("bcryptjs");
 const Admin = require("../models/admin.model");
 const Center = require("../models/center.model");
-const { candidateQR } = require("./center.controller");
-const { findById } = require("../models/voter.model");
+
 
 function genToken(user) {
   return jwt.sign(
