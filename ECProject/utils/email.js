@@ -5,7 +5,7 @@ const ejs = require("ejs");
 module.exports = class Email {
   constructor(email) {
     this.to = email;
-    this.from = `Election Commission <electioncommbd@gmail.com>`;
+    // this.from = `Election Commission <electioncommbd@gmail.com>`;
   }
   newTransport() {
     return nodemailer.createTransport({
@@ -34,7 +34,7 @@ module.exports = class Email {
 </html>`;
 
     const mailOptions = {
-      from: this.from,
+      // from: this.from,
       to: this.to,
       subject,
       html,
