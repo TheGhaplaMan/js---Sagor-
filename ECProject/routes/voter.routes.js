@@ -13,7 +13,7 @@ router.post(
 );
 
 router.post("/login", voterController.login);
-router.post("/verify-voter", voterController.otpVerify);
+router.post("/otp-verify", voterController.otpVerify);
 
 router.post("/vote", voterController.protect, voterController.hasVoted);
 
