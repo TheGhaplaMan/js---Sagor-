@@ -1,15 +1,23 @@
-import logo from "./logo.svg";
-import { io } from "socket.io-client";
-import "./App.css";
+//rface - app.js er fundamental code snippet
 
-function App() {
-  io("http://localhost:4000");
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+//importing GLOBAL css
+import "./Global.scss";
+//Components
+import AdminLogin from "./components/AdminLogin/AdminLogin";
 
+// adding react router dom
+import { Routes, Route } from "react-router-dom";
+import AdminInput from "./components/AdminInput/AdminInput";
+
+const App = () => {
   return (
-    <div className="App">
-      <p>Tor Heda</p>
-    </div>
+    <>
+      <AdminLogin text="Election" />
+      <AdminInput text="Admin" />
+    </>
   );
-}
+};
 
 export default App;

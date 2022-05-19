@@ -4,6 +4,8 @@ const path = require("path");
 const app = express();
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
+const cors = require("cors");
+
 dotenv.config({ path: "./ECProject/config.env" });
 
 const http = require("http");
@@ -36,6 +38,7 @@ const adminRouter = require("./routes/admin.routes");
 const voterRouter = require("./routes/voter.routes");
 
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/v1/voter", voterRouter);
 app.use("/api/v1/center", centerRouter);
