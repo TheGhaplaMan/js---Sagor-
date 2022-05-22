@@ -72,9 +72,12 @@ const AdminInput = ({ text }) => {
                     onChange={handleChange}
                   />
                 </Form.Group>
-                <Button type="submit" className="btnStyle text-black fw-bold">
-                  Login
-                </Button>
+
+                <div className="text-center">
+                  <Button type="submit" className="btnStyle text-black fw-bold">
+                    Login
+                  </Button>
+                </div>
               </Form>
             </Col>
           </Row>
