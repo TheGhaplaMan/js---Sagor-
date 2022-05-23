@@ -1,6 +1,6 @@
 import React from "react";
-import AdminInput from "../components/AdminInput/AdminInput";
-import Navigation from "../components/Navbar/Navbar";
+import AdminInput from "../../components/AdminInput/AdminInput";
+import Navigation from "../../components/Navbar/Navbar";
 
 const Login = () => {
   return (

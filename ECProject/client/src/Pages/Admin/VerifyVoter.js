@@ -1,7 +1,6 @@
 import React from "react";
-import { Button, Container } from "react-bootstrap";
-import RedButton from "../components/Button/Redbutton";
-import Navigation from "../components/Navbar/Navbar";
+import { Container } from "react-bootstrap";
+import Navigation from "../../components/Navbar/Navbar";
 
 const VerifyVoter = () => {
   return (

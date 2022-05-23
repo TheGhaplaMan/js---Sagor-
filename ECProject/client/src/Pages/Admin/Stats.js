@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Container } from "react-bootstrap";
-import RedButton from "../components/Button/Redbutton";
-import Navigation from "../components/Navbar/Navbar";
+import RedButton from "../../components/Button/Redbutton";
+import Navigation from "../../components/Navbar/Navbar";
 
-const VoteScreen = () => {
+const Stats = () => {
   return (
     <>
       <Navigation text="Election" />
@@ -15,4 +15,4 @@ const VoteScreen = () => {
   );
 };
 
-export default VoteScreen;
+export default Stats;

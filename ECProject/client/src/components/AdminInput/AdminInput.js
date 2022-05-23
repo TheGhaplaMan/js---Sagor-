@@ -56,14 +56,14 @@ const AdminInput = ({ text }) => {
               <h2 className="text-center mb-5">{text}</h2>
               <Form onSubmit={formSubmit}>
                 <Form.Group
-                  className="mb-3"
+                  className="mb-3 shadow py-2"
                   name="email"
                   value={info.email}
                   onChange={handleChange}
                 >
                   <Form.Control type="email" placeholder="Email Address" />
                 </Form.Group>
-                <Form.Group className="mb-3">
+                <Form.Group className="mb-3 shadow py-2">
                   <Form.Control
                     type="password"
                     placeholder="Enter Password"
