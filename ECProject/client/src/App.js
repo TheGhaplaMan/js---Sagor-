@@ -16,6 +16,7 @@ import VoteScreen from "./Pages/Admin/Vote Screen";
 import Stats from "./Pages/Admin/Stats";
 import VoterLogin from "./Pages/User/VoterLogin";
 import OTP from "./Pages/User/OTP";
+import UserInfo from "./Pages/User/UserInfo";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/admin/stats" element={<Stats />} />
 
         {/* Voter End */}
+        <Route path="/" element={<UserInfo />} />
         <Route path="/user/login" element={<VoterLogin />} />
         <Route path="/user/otp" element={<OTP />} />
       </Routes>

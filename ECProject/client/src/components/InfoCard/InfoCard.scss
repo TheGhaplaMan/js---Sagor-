@@ -1,0 +1,15 @@
+#infoCard{
+  height: 90vh;
+  
+  .main_card{
+    background-color: #F2F2F2;
+  }
+  .card_image{
+    padding: 1rem 0;
+    img{
+      border-radius: 25px;
+      width: 200px;
+      height: auto;
+    }
+  }
+}
