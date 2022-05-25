@@ -6,6 +6,9 @@ import { qrCardData } from "../../data/data";
 
 const VoteScreen = () => {
   const [data, setData] = useState(qrCardData);
+
+  const cardShuffle = data.sort(() => Math.random() - Math.random());
+
   return (
     <>
       <Navigation text="Election" />
@@ -14,7 +17,7 @@ const VoteScreen = () => {
         <h4 className="text-end mt-1 pt-1">Room No 103</h4>
 
         <Row>
-          {data.map((element) => {
+          {cardShuffle.map((element) => {
             return <QRCard key={element.id} {...element} />;
           })}
         </Row>
