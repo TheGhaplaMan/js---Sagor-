@@ -5,7 +5,7 @@
   "main": "shuru.js",
   "scripts": {
     "learning": "node learning/app.js",
-    "start": "node ECProject/voter.app.js",
+    "start": "node ECProject/client/src/App.js",
     "learn": "nodemon ./learning/app.js",
     "dev": "nodemon ./ECProject/voter.app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
