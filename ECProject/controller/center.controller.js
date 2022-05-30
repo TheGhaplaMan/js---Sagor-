@@ -5,27 +5,7 @@ const qrCode = require("qrcode");
 exports.createCenter = async (req, res, next) => {
   const newCenter = await Center.create(req.body);
 
-  // let qrGen; // callback function dia
-  // QRCode.toDataURL("I am a pony!", function (err, url) {
-  //   console.log(url);
-  //   qrGen = url;
-  // });
-
-  //promise use koira
-  const qrGen = await promisify(qrCode.toDataURL)(newCenter._id.toString());
-  newCenter.centerQR = qrGen;
-
-  for (const candidate of newCenter.candidates) {
-    const candidateQRGen = await promisify(qrCode.toDataURL)(
-      candidate._id.toString()
-    );
-    candidate.candidateQR = candidateQRGen;
-  }
-
-  newCenter.markModified("candidates");
-  const upDatedCenter = await newCenter.save();
-
-  res.status(201).json(upDatedCenter);
+  res.status(201).json(newCenter);
 };
 
 exports.getAllCenter = async (req, res, next) => {

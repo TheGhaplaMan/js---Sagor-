@@ -36,6 +36,7 @@ io.on("connection", (socket) => {
 const centerRouter = require("./routes/center.routes");
 const adminRouter = require("./routes/admin.routes");
 const voterRouter = require("./routes/voter.routes");
+const candidateRouter = require("./routes/candidate.routes");
 
 app.use(express.json());
 app.use(cors());
@@ -43,6 +44,7 @@ app.use(cors());
 app.use("/api/v1/voter", voterRouter);
 app.use("/api/v1/center", centerRouter);
 app.use("/api/v1/admin", adminRouter);
+app.use("/api/v1/candidate", candidateRouter);
 
 server.listen(port, () => {
   console.log("shunbooooo");

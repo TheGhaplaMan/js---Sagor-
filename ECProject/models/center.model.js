@@ -5,19 +5,6 @@ const centerSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  candidates: [
-    {
-      candidateName: String,
-      voteReceived: {
-        type: Number,
-        default: 0,
-      },
-      candidateQR: {
-        type: String,
-        default: null,
-      },
-    },
-  ],
   totalVote: {
     type: Number,
     default: 0,
