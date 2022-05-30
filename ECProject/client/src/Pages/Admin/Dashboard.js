@@ -11,11 +11,14 @@ const Dashboard = () => {
         <h2 className="text-center mt-5 pt-5">Admin</h2>
         <h4 className="text-end mt-1 pt-1">Room No 103</h4>
         <div className="text-center mt-5 pt-5">
-          <RedButton btnName="Vote Screen" />
+          <RedButton toPage="/admin/vote" btnName="Vote Screen" />
           <br /> <br />
-          <RedButton btnName="Voter Verification" />
+          <RedButton
+            toPage="/admin/verify-voter"
+            btnName="Voter Verification"
+          />
           <br /> <br />
-          <RedButton btnName="Center Stats" />
+          <RedButton toPage="/admin/stats" btnName="Center Stats" />
           <br /> <br />
         </div>
       </Container>

@@ -4,7 +4,7 @@ import userImg from "../../images/Sagor-Mahtab.jpg";
 import RedButton from "../Button/Redbutton";
 import "./InfoCard.scss";
 
-const InfoCard = () => {
+const InfoCard = ({ linkBoshuk }) => {
   return (
     <>
       <section
@@ -36,8 +36,7 @@ const InfoCard = () => {
                   <p>
                     <strong>Room : </strong> 103
                   </p>
-
-                  <RedButton btnName="Vote" />
+                  <RedButton toPage={linkBoshuk} btnName="Vote" />
                 </Card.Body>
               </Card>
             </Col>

@@ -6,7 +6,7 @@ const UserInfo = () => {
   return (
     <>
       <Navigation text="Election" />
-      <InfoCard />
+      <InfoCard linkBoshuk="/user/scan" />
     </>
   );
 };
