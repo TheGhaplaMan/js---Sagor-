@@ -12,15 +12,18 @@ export const qrCardData = [
     id: 1,
     title: "Party A",
     imgSrc: qr_A,
+    voteCount : "176"
   },
   {
     id: 2,
     title: "Party B",
     imgSrc: qr_B,
+    voteCount : "211"
   },
   {
     id: 3,
     title: "Party C",
     imgSrc: qr_C,
+    voteCount : "121"
   },
 ];
