@@ -14,16 +14,17 @@ const VoteScreen = () => {
     <>
       <Navigation text="Election" />
       <Container>
-        <RedButton toPage="/" btnName="Home" />
-
         <h2 className="text-center mt-5 pt-5">Admin</h2>
         <h4 className="text-end mt-1 pt-1">Room No 103</h4>
+        <div className="text-center">
+          <RedButton toPage="/admin/dashboard" btnName="Home" />
 
-        <Row>
-          {cardShuffle.map((element) => {
-            return <QRCard key={element.id} {...element} />;
-          })}
-        </Row>
+          <Row>
+            {cardShuffle.map((element) => {
+              return <QRCard key={element.id} {...element} />;
+            })}
+          </Row>
+        </div>
       </Container>
     </>
   );

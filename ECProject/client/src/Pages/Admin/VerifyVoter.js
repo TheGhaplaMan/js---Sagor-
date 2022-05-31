@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import RedButton from "../../components/Button/Redbutton";
 import Navigation from "../../components/Navbar/Navbar";
 import QRCard from "../../components/QRCard/QRCard";
 
@@ -14,7 +15,10 @@ const VerifyVoter = () => {
         <h2 className="text-center mt-5 pt-5">Admin</h2>
         <h4 className="text-end mt-1 pt-1">Room No 103</h4>
 
-        <QRCard title="Scan here" imgSrc={qrImage} />
+        <div className="text-center">
+          <RedButton toPage="/admin/dashboard" btnName="Home" />
+          <QRCard title="Scan here" imgSrc={qrImage} />
+        </div>
       </Container>
     </>
   );
