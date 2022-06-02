@@ -12,7 +12,7 @@ const Navigation = ({ text }) => {
         <Container>
           <div className="d-flex justify-content-between">
             <div className="mx-auto">
-              <Link to="/dashboard" className="text_link text-light">
+              <Link to="/" className="text_link text-light">
                 {text}
               </Link>
             </div>
