@@ -21,6 +21,7 @@ import Error from "./Pages/Error";
 import Scan from "./Pages/User/Scan";
 import Success from "./Pages/User/Success";
 import VoteConfirm from "./Pages/User/VoteConfirm";
+import CreateAdmin from "./Pages/Admin/CreateAdmin";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
       <Routes>
         {/* Admin */}
         <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/create" element={<CreateAdmin />} />
         <Route path="/admin/login" element={<Login />} />
         <Route path="/admin/verify-voter" element={<VerifyVoter />} />
         <Route path="/admin/vote" element={<VoteScreen />} />

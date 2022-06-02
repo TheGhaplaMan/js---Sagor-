@@ -5,47 +5,37 @@ import "./AdminInput.scss";
 const AdminInput = ({ text }) => {
   const [info, setInfo] = useState({
     email: "",
-    password: "",
+    pass: "",
   });
 
-  const handleChange = (e) => {
-    // console.log(e.target);
+  const eventChange = (e) => {
     const { name, value } = e.target;
-    setInfo({ [name]: value });
+    console.log(e.target);
+
+    setInfo({ ...info, [name]: value });
   };
 
-  //   after clicking on button
-  const formSubmit = (e) => {
+  const formSubmit = async (e) => {
     e.preventDefault();
-  };
 
-  //   api call to backend like this
-  const postMethod = async () => {
-    const { email, password } = info;
+    const { email, pass } = info;
 
-    const res = await fetch("post method routes link hobe", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
-
+    const res = await fetch(
+      "http://theghaplaman.herokuapp.com/api/v1/admin/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          pass,
+        }),
+      }
+    );
     const data = await res.json();
-    // setMain(data);
-
-    if (!data) {
-      console.log(data);
-    }
+    console.log(data);
   };
-
-  useEffect(() => {
-    postMethod();
-  }, []);
 
   return (
     <>
@@ -55,21 +45,23 @@ const AdminInput = ({ text }) => {
             <Col xl={4} className="mx-auto">
               <h2 className="text-center mb-5">{text}</h2>
               <Form onSubmit={formSubmit}>
-                <Form.Group
-                  className="mb-3 shadow py-2"
-                  name="email"
-                  value={info.email}
-                  onChange={handleChange}
-                >
-                  <Form.Control type="email" placeholder="Email Address" />
+                <Form.Group className="mb-3 shadow py-2">
+                  <Form.Control
+                    type="email"
+                    placeholder="Email Address"
+                    value={info.email}
+                    name="email"
+                    onChange={eventChange}
+                  />
                 </Form.Group>
+
                 <Form.Group className="mb-3 shadow py-2">
                   <Form.Control
                     type="password"
                     placeholder="Enter Password"
                     name="password"
-                    value={info.password}
-                    onChange={handleChange}
+                    value={info.pass}
+                    onChange={eventChange}
                   />
                 </Form.Group>
 
