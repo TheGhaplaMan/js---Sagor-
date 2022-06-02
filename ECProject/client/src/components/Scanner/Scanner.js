@@ -163,7 +163,7 @@ const Scanner = () => {
           delay={500}
           onError={handleError}
           onScan={handleScan}
-          //   chooseDeviceId={() => selected}
+          // chooseDeviceId={() => selected}
           style={{ width: "200px", heigth: "100px" }}
         />
       )}
