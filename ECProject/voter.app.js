@@ -40,6 +40,7 @@ const candidateRouter = require("./routes/candidate.routes");
 
 app.use(express.json());
 app.use(cors());
+// app.get("/");
 
 app.use("/api/v1/voter", voterRouter);
 app.use("/api/v1/center", centerRouter);
