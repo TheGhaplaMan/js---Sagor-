@@ -34,6 +34,7 @@ const adminSchema = new mongoose.Schema({
   },
   votedAlready: {
     type: Number,
+    default: 0,
   },
 });
 

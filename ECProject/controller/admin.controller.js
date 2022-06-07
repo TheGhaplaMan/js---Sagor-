@@ -39,7 +39,7 @@ exports.createAdmin = async (req, res, next) => {
       .json({ status: "error", message: "Admin already exists" });
   }
 
-  const passHash = await bcrypt.hash(pass, 12);
+  const passHash = await bcrypt.hash(pass, 10);
 
   const newAdmin = await Admin.create({ ...req.body, pass: passHash });
 
@@ -48,13 +48,11 @@ exports.createAdmin = async (req, res, next) => {
   const upDatedAdmin = await newAdmin.save();
 
   // await new Email(newAdmin).send("welcome", "The Subject Lol");
-  res
-    .status(200)
-    .json({
-      status: "success",
-      message: "Done. Login now.",
-      data: upDatedAdmin,
-    });
+  res.status(200).json({
+    status: "success",
+    message: "Done. Login now.",
+    data: upDatedAdmin,
+  });
 };
 
 exports.login = async (req, res, next) => {

@@ -1,56 +1,57 @@
 import React, { useState } from "react";
 import { Form, Row, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import RedButton from "../Button/Redbutton";
 
 const AdminCreate = () => {
   const navigate = useNavigate();
 
-  // state of input
   const [info, setInfo] = useState({
     name: "",
     email: "",
     pass: "",
     room: "",
+    tv: "",
     centerId: "",
   });
 
-  // input change
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setInfo({ ...info, [name]: value });
   };
 
-  // form submit
   const formSubmit = async (e) => {
     e.preventDefault();
+    const { name, email, pass, room, tv, centerId } = info;
+    try {
+      const res = await fetch(
+        "http://theghaplaman.herokuapp.com/api/v1/admin/new-admin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userName: name,
+            email,
+            pass,
+            roomNumber: room,
+            totalVoter: tv,
+            centerId,
+          }),
+        }
+      );
 
-    const { name, email, pass, room, centerId } = info;
-
-    const res = await fetch(
-      "http://theghaplaman.herokuapp.com/api/v1/admin/new-admin",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          pass,
-          room,
-          centerId,
-        }),
+      const data = await res.json();
+      console.log(data);
+      if (!data || res.status === 403) {
+        alert(data.message);
       }
-    );
-
-    const data = await res.json();
-    // console.log(data);
-    if (!data || res.status === 404) {
-      console.log("Invalid user");
-    } else {
-      console.log("user added successful");
-      navigate("/admin/dashboard");
+      if (data.status === "success") {
+        navigate("/admin/login");
+      }
+    } catch (err) {
+      alert(err);
     }
   };
 
@@ -58,7 +59,7 @@ const AdminCreate = () => {
     <>
       <div className="container my-5">
         <div className="text-center">
-          <Link to="/" className="text-primary display-6 fw-bold">
+          <Link to="/" className="text   display-6 fw-bold">
             Back to home
           </Link>
         </div>
@@ -66,7 +67,7 @@ const AdminCreate = () => {
           <div className="col-xl-8 mx-auto">
             <Form onSubmit={formSubmit}>
               <Row className="mb-3">
-                <Form.Group className="mb-3" controlId="name">
+                <Form.Group className="mb-3">
                   <Form.Label>Name</Form.Label>
                   <Form.Control
                     type="text"
@@ -76,7 +77,7 @@ const AdminCreate = () => {
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="email">
+                <Form.Group className="mb-3">
                   <Form.Label>Email</Form.Label>
                   <Form.Control
                     type="email"
@@ -86,7 +87,7 @@ const AdminCreate = () => {
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="age">
+                <Form.Group className="mb-3">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
                     type="password"
@@ -96,17 +97,27 @@ const AdminCreate = () => {
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="phone">
+                <Form.Group className="mb-3">
                   <Form.Label>Room No</Form.Label>
                   <Form.Control
-                    type="text"
+                    type="number"
                     name="room"
                     value={info.room}
                     onChange={handleChange}
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="work">
+                <Form.Group className="mb-3">
+                  <Form.Label>Total Voter</Form.Label>
+                  <Form.Control
+                    type="number"
+                    name="tv"
+                    value={info.tv}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
                   <Form.Label>Center</Form.Label>
                   <Form.Control
                     type="text"
@@ -118,7 +129,14 @@ const AdminCreate = () => {
               </Row>
 
               <div className="d-grid gap-2">
-                <Button variant="primary" type="submit">
+                <Button
+                  type="submit"
+                  className="btn_shadow"
+                  style={{
+                    backgroundColor: "#CF8181",
+                    color: "#000",
+                  }}
+                >
                   Submit
                 </Button>
               </div>
