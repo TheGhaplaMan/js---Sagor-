@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "./AdminInput.scss";
 
-const AdminInput = ({ text }) => {
+const AdminLogin = ({ text }) => {
+  const navigate = useNavigate();
+
   const [info, setInfo] = useState({
     email: "",
     pass: "",
   });
 
-  const eventChange = (e) => {
+  const loginClick = (e) => {
     const { name, value } = e.target;
     console.log(e.target);
 
@@ -19,10 +22,9 @@ const AdminInput = ({ text }) => {
     e.preventDefault();
 
     const { email, pass } = info;
-
-    const res = await fetch(
-      "http://theghaplaman.herokuapp.com/api/v1/admin/login",
-      {
+    try {
+      // const res = await fetch("http://theghaplaman.herokuapp.com/api/v1/admin/login", {
+      const res = await fetch("http://localhost:4000/api/v1/admin/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,10 +33,19 @@ const AdminInput = ({ text }) => {
           email,
           pass,
         }),
+      });
+      const data = await res.json();
+      // console.log(data);
+
+      if (!data || res.status === 403 || res.status === 404) {
+        alert(data.message);
       }
-    );
-    const data = await res.json();
-    console.log(data);
+      if (data.status === "success") {
+        navigate("/admin/dashboard");
+      }
+    } catch (err) {
+      alert(err);
+    }
   };
 
   return (
@@ -51,7 +62,7 @@ const AdminInput = ({ text }) => {
                     placeholder="Email Address"
                     value={info.email}
                     name="email"
-                    onChange={eventChange}
+                    onChange={loginClick}
                   />
                 </Form.Group>
 
@@ -59,9 +70,9 @@ const AdminInput = ({ text }) => {
                   <Form.Control
                     type="password"
                     placeholder="Enter Password"
-                    name="password"
+                    name="pass"
                     value={info.pass}
-                    onChange={eventChange}
+                    onChange={loginClick}
                   />
                 </Form.Group>
 
@@ -79,4 +90,4 @@ const AdminInput = ({ text }) => {
   );
 };
 
-export default AdminInput;
+export default AdminLogin;

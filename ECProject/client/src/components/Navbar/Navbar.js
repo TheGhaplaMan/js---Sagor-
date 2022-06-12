@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Container, Dropdown } from "react-bootstrap";
 import { FaUserAlt } from "react-icons/fa";
 import "./Navbar.scss";
 
@@ -18,7 +18,15 @@ const Navigation = ({ text }) => {
             </div>
 
             <div>
-              <FaUserAlt />
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  <FaUserAlt />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">Log Out</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
           </div>
         </Container>

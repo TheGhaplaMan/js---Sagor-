@@ -63,16 +63,30 @@ exports.login = async (req, res, next) => {
   let adminFound = await Admin.findOne({ email: email });
 
   if (!adminFound) {
-    return res.status(404).json({ status: "error", message: "User nai" });
+    return res.status(404).json({ status: "error", message: "Not Found" });
   }
 
   if (!(await bcrypt.compare(pass, adminFound.pass))) {
     return res
       .status(403)
-      .json({ status: "error", message: "ghapla ase kothao" });
+      .json({ status: "error", message: "Wrong Password or Email" });
   }
   adminFound.pass = undefined;
   const token = genToken(adminFound);
 
   res.status(200).json({ status: "success", token, userData: adminFound });
+};
+
+exports.getAdmin = async (req, res, next) => {
+  const findAdmin = await Admin.findById(req.params.adminId);
+  if (!findAdmin) {
+    return res.status(404).json({ status: "Error", message: "Pai naika" });
+  }
+  return res.status(200).json({ status: "success", findAdmin });
+};
+
+exports.getAdminsss = async (req, res, next) => {
+  const findAllAdmins = await Admin.find();
+  if (findAllAdmins === undefined) console.log("hehe");
+  return res.status(200).json({ findAllAdmins });
 };

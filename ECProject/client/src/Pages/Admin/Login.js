@@ -1,12 +1,12 @@
 import React from "react";
-import AdminInput from "../../components/AdminInput/AdminInput";
+import AdminLogin from "../../components/AdminLogin/AdminLogin";
 import Navigation from "../../components/Navbar/Navbar";
 
 const Login = () => {
   return (
     <>
       <Navigation text="Election" />
-      <AdminInput />
+      <AdminLogin />
     </>
   );
 };

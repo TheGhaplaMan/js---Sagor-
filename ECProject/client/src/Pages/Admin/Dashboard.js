@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import RedButton from "../../components/Button/Redbutton";
 import Navigation from "../../components/Navbar/Navbar";
+import axios from "axios";
 
 const Dashboard = () => {
+  useEffect(() => {}, []);
+  fetch("http://localhost:4000/api/v1/admin/all-admins")
+    .then((response) => console.log(response))
+    .then((json) => console.log(json));
+
   return (
     <>
       <Navigation text="Election" />
