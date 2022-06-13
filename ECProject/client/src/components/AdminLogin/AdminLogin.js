@@ -23,17 +23,20 @@ const AdminLogin = ({ text }) => {
 
     const { email, pass } = info;
     try {
-      // const res = await fetch("http://theghaplaman.herokuapp.com/api/v1/admin/login", {
-      const res = await fetch("http://localhost:4000/api/v1/admin/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          pass,
-        }),
-      });
+      const res = await fetch(
+        "http://theghaplaman.herokuapp.com/api/v1/admin/login",
+        {
+          // const res = await fetch("http://localhost:4000/api/v1/admin/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            pass,
+          }),
+        }
+      );
       const data = await res.json();
       // console.log(data);
 
