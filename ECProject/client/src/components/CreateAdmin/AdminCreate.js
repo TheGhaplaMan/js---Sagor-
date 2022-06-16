@@ -58,10 +58,8 @@ const AdminCreate = () => {
   return (
     <>
       <div className="container my-5">
-        <div className="text-center">
-          <Link to="/" className="text   display-6 fw-bold">
-            Back to home
-          </Link>
+        <div className="text-center  mb-5">
+          <RedButton toPage="/admin/dashboard" btnName="Home" />
         </div>
         <div className="row">
           <div className="col-xl-8 mx-auto">
