@@ -8,7 +8,7 @@ const InfoCard = ({ linkBoshuk }) => {
   return (
     <>
       <section
-        className="d-flex align-items-center justify-content-center"
+        className="d-flex text-center mt-5 justify-content-center"
         id="infoCard"
       >
         <Container>
