@@ -17,8 +17,8 @@ const UserInput = ({ text }) => {
                 <Form.Group className="mb-3 shadow py-2">
                   <Form.Control
                     type="text"
-                    placeholder="Phone No"
-                    name="PhoneNo"
+                    placeholder="Email"
+                    name="email"
                   />
                 </Form.Group>
 

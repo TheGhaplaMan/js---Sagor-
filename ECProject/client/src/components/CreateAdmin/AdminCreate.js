@@ -25,7 +25,7 @@ const AdminCreate = () => {
     const { name, email, pass, room, tv, centerId } = info;
     try {
       const res = await fetch(
-        "http://theghaplaman.herokuapp.com/api/v1/admin/new-admin",
+        "https://theghaplaman.herokuapp.com/api/v1/admin/new-admin",
         {
           method: "POST",
           headers: {

@@ -6,7 +6,11 @@ import Scanner from "../../components/Scanner/Scanner";
 const Scan = () => {
   return (
     <>
-      <Navigation text="Election" />;
+      <Navigation text="Election" />
+      <div className="text-center mb-5 mt-5">
+
+      <RedButton toPage="/" btnName="Home" />
+      </div>
       <Scanner />
     </>
   );

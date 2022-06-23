@@ -8,7 +8,7 @@ const UserInfo = () => {
     <>
       <Navigation text="Election" />
       <div className="text-center mt-5">
-        <RedButton toPage="/" btnName="Home" />
+       
       </div>
       <InfoCard linkBoshuk="/user/scan" />
     </>

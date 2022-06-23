@@ -14,13 +14,13 @@ const Dashboard = () => {
     <>
       <Navigation text="Election" />
       <Container>
-        <div className="text-end mt-3">
+        {/* <div className="text-end mt-3">
           <RedButton toPage="/admin/create" btnName="Create New" />
-        </div>
+        </div> */}
 
-        <h2 className="text-center mt-5 pt-5">Admin</h2>
+        <h2 className="text-center mt-5 mb-5">Admin</h2>
         <h4 className="text-end mt-1 pt-1">Room No 103</h4>
-        <div className="text-center mt-5 pt-5">
+        <div className="text-center mt-3 mb-5">
           <br /> <br />
           <RedButton toPage="/admin/vote" btnName="Vote Screen" />
           <br /> <br />
