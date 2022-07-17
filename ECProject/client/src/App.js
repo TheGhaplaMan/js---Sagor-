@@ -28,7 +28,7 @@ const App = () => {
     <>
       <Routes>
         {/* Admin */}
-        <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/dashboard/:id" element={<Dashboard />} />
         <Route path="/admin/create" element={<CreateAdmin />} />
         <Route path="/admin/login" element={<Login />} />
         <Route path="/admin/verify-voter" element={<VerifyVoter />} />

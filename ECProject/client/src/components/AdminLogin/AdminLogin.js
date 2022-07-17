@@ -23,28 +23,25 @@ const AdminLogin = ({ text }) => {
 
     const { email, pass } = info;
     try {
-      const res = await fetch(
-        "https://theghaplaman.herokuapp.com/api/v1/admin/login",
-        {
-          // const res = await fetch("http://localhost:4000/api/v1/admin/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            pass,
-          }),
-        }
-      );
+      const res = await fetch("http://localhost:4000/api/v1/admin/login", {
+        // const res = await fetch("http://localhost:4000/api/v1/admin/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          pass,
+        }),
+      });
       const data = await res.json();
-      // console.log(data);
+      console.log(data);
 
       if (!data || res.status === 403 || res.status === 404) {
         alert(data.message);
       }
       if (data.status === "success") {
-        navigate("/admin/dashboard");
+        navigate(`/admin/dashboard/${data.userData._id}`);
       }
     } catch (err) {
       alert(err);

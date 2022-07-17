@@ -1,14 +1,45 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 import RedButton from "../../components/Button/Redbutton";
 import Navigation from "../../components/Navbar/Navbar";
-import axios from "axios";
 
 const Dashboard = () => {
-  useEffect(() => {}, []);
-  fetch("http://localhost:4000/api/v1/admin/all-admins")
-    .then((response) => console.log(response))
-    .then((json) => console.log(json));
+  const [uData, setData] = useState({});
+  const [centData, setCData] = useState({});
+  const params = useParams();
+  console.log(params + "hudai");
+
+  const { id } = params;
+  console.log(id);
+
+  const getAdmin = async () => {
+    const res = await fetch(`http://localhost:4000/api/v1/admin/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    console.log(data.findAdmin);
+    setData(data.findAdmin);
+
+    const cId = data.findAdmin.centerId;
+    console.log(cId);
+    const resp = await fetch(`http://localhost:4000/api/v1/center/${cId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const cData = await resp.json();
+    console.log(cData);
+    setCData(cData);
+  };
+
+  useEffect(() => {
+    getAdmin();
+  }, []);
 
   return (
     <>
@@ -18,8 +49,18 @@ const Dashboard = () => {
           <RedButton toPage="/admin/create" btnName="Create New" />
         </div> */}
 
-        <h2 className="text-center mt-5 mb-5">Admin</h2>
-        <h4 className="text-end mt-1 pt-1">Room No 103</h4>
+        <h2 className="text-center fw-bold display-4 mt-5 mb-2">
+          {uData.userName}
+        </h2>
+        <h4 className="text-center mt-1 pt-1">Room No {uData.roomNumber}</h4>
+        <h4 className="text-end mt-1 pt-1">
+          Total Voters{" "}
+          <span className="text-danger display-6"> {uData.totalVoter}</span>
+        </h4>
+        <h4 className="text-end mt-1 pt-1">
+          <span className="text-danger display-6">{uData.votedAlready} </span>
+          Votes Colleceted
+        </h4>
         <div className="text-center mt-3 mb-5">
           <br /> <br />
           <RedButton toPage="/admin/vote" btnName="Vote Screen" />
@@ -31,6 +72,9 @@ const Dashboard = () => {
           <br /> <br />
           <RedButton toPage="/admin/stats" btnName="Center Stats" />
           <br /> <br />
+          <h4 className="text-center display-3 fw-bold mt-5 pt-5">
+            {centData.centerName}
+          </h4>
         </div>
       </Container>
     </>
