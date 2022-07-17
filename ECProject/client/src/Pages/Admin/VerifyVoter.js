@@ -16,7 +16,7 @@ const VerifyVoter = () => {
         <h4 className="text-end mt-1 pt-1">Room No 103</h4>
 
         <div className="text-center">
-          <RedButton toPage="/admin/dashboard" btnName="Home" />
+          <RedButton toPage="/admin/dashboard/:id" btnName="Home" />
           <QRCard title="Scan here" imgSrc={qrImage} />
         </div>
       </Container>

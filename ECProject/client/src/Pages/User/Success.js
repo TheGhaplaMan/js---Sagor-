@@ -8,7 +8,7 @@ const Success = () => {
       <Navigation text="Election" />
       <div className="centerize">
         <h1 className="mb-5">Successssssss!</h1>
-        <RedButton toPage="/" btnName="Back To Home" />
+        <RedButton toPage="/" btnName="Home" />
       </div>
     </>
   );

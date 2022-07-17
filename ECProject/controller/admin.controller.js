@@ -39,7 +39,7 @@ exports.createAdmin = async (req, res, next) => {
       .json({ status: "error", message: "Admin already exists" });
   }
 
-  const passHash = await bcrypt.hash(pass, 10);
+  const passHash = await bcrypt.hash(pass,10);
 
   const newAdmin = await Admin.create({ ...req.body, pass: passHash });
 

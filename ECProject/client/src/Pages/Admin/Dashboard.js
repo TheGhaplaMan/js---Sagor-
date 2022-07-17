@@ -15,6 +15,7 @@ const Dashboard = () => {
 
   const getAdmin = async () => {
     const res = await fetch(`http://localhost:4000/api/v1/admin/${id}`, {
+    // const res = await fetch(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -27,6 +28,7 @@ const Dashboard = () => {
     const cId = data.findAdmin.centerId;
     console.log(cId);
     const resp = await fetch(`http://localhost:4000/api/v1/center/${cId}`, {
+    // const resp = await fetch(`http://theghaplaman.herokuapp.com/api/v1/center/${cId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +51,7 @@ const Dashboard = () => {
           <RedButton toPage="/admin/create" btnName="Create New" />
         </div> */}
 
-        <h2 className="text-center fw-bold display-4 mt-5 mb-2">
+        <h2 className="text-center fw-bold display-4 mt-2 mb-1">
           {uData.userName}
         </h2>
         <h4 className="text-center mt-1 pt-1">Room No {uData.roomNumber}</h4>
@@ -61,7 +63,7 @@ const Dashboard = () => {
           <span className="text-danger display-6">{uData.votedAlready} </span>
           Votes Colleceted
         </h4>
-        <div className="text-center mt-3 mb-5">
+        <div className="text-center mt-1 mb-3">
           <br /> <br />
           <RedButton toPage="/admin/vote" btnName="Vote Screen" />
           <br /> <br />
@@ -72,7 +74,7 @@ const Dashboard = () => {
           <br /> <br />
           <RedButton toPage="/admin/stats" btnName="Center Stats" />
           <br /> <br />
-          <h4 className="text-center display-3 fw-bold mt-5 pt-5">
+          <h4 className="text-center display-3 fw-bold mt-3 pt-5">
             {centData.centerName}
           </h4>
         </div>
