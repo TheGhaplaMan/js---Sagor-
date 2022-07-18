@@ -14,32 +14,34 @@ const Dashboard = () => {
   console.log(id);
 
   const getAdmin = async () => {
-    const res = await fetch(`http://localhost:4000/api/v1/admin/${id}`, {
-      // const res = await fetch(
-      //   `http://theghaplaman.herokuapp.com/api/v1/admin/${id}`,
-      //   {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    // const res = await fetch(`http://localhost:4000/api/v1/admin/${id}`, {
+    const res = await fetch(
+      `http://theghaplaman.herokuapp.com/api/v1/admin/${id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
     const data = await res.json();
     console.log(data.findAdmin);
     setData(data.findAdmin);
 
     const cId = data.findAdmin.centerId;
     console.log(cId);
-    const resp = await fetch(`http://localhost:4000/api/v1/center/${cId}`, {
-      // const resp = await fetch(
-      //   `http://theghaplaman.herokuapp.com/api/v1/center/${cId}`,
-      //   {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    // const resp = await fetch(`http://localhost:4000/api/v1/center/${cId}`, {
+    const resp = await fetch(
+      `http://theghaplaman.herokuapp.com/api/v1/center/${cId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
     const cData = await resp.json();
     console.log(cData);
     setCData(cData);
