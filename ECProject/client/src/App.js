@@ -31,9 +31,9 @@ const App = () => {
         <Route path="/admin/dashboard/:id" element={<Dashboard />} />
         <Route path="/admin/create" element={<CreateAdmin />} />
         <Route path="/admin/login" element={<Login />} />
-        <Route path="/admin/verify-voter" element={<VerifyVoter />} />
-        <Route path="/admin/vote" element={<VoteScreen />} />
-        <Route path="/admin/stats" element={<Stats />} />
+        <Route path="/admin/verify-voter/:id" element={<VerifyVoter />} />
+        <Route path="/admin/vote/:id" element={<VoteScreen />} />
+        <Route path="/admin/stats/:id" element={<Stats />} />
 
         {/* Voter End */}
         <Route path="/" element={<UserInfo />} />
