@@ -17,12 +17,22 @@ const Stats = () => {
   // console.log(id);
 
   const apiDaki = async () => {
-    const omuk = await axios.get(`http://localhost:4000/api/v1/admin/${id}`);
-    // console.log(omuk.data.findAdmin);
+    // const omuk = await axios.get(`http://localhost:4000/api/v1/admin/${id}`, {
+    //   Authorization: `Bearer ${localStorage.getItem("token")}`,
+    // });
+    const omuk = await axios.get(
+      `http://theghaplaman.herokuapp.com/api/v1/admin/${id}`,
+      { Authorization: `Bearer ${localStorage.getItem("token")}` }
+    );
+    console.log(omuk.data.findAdmin);
     setUData(omuk.data.findAdmin);
   };
   const candidateDaki = async () => {
-    const cenn = await axios.get("http://localhost:4000/api/v1/candidate");
+    // const cenn = await axios.get("http://localhost:4000/api/v1/candidate", { Authorization: `Bearer ${localStorage.getItem("token")}`,});
+    const cenn = await axios.get(
+      "http://theghaplaman.herokuapp.com/api/v1/candidate",
+      { Authorization: `Bearer ${localStorage.getItem("token")}` }
+    );
     // console.log(cenn.data[0].majorCandidates);
     setCData(cenn.data[0].majorCandidates);
   };

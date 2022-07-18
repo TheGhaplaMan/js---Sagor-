@@ -19,7 +19,11 @@ const VoteScreen = () => {
   // console.log(id);
 
   const apiDaki = async () => {
-    const omuk = await axios.get(`http://localhost:4000/api/v1/admin/${id}`);
+    // const omuk = await axios.get(`http://localhost:4000/api/v1/admin/${id}`, {Authorization: `Bearer ${localStorage.getItem("token")}`,});
+    const omuk = await axios.get(
+      `http://theghaplaman.herokuapp.com/api/v1/admin/${id}`,
+      { Authorization: `Bearer ${localStorage.getItem("token")}` }
+    );
     // console.log(omuk.data.findAdmin);
     setUData(omuk.data.findAdmin);
   };

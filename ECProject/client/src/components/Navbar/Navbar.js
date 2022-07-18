@@ -6,6 +6,10 @@ import "./Navbar.scss";
 import { Link } from "react-router-dom";
 
 const Navigation = ({ text }) => {
+  const logout = () => {
+    localStorage.removeItem("token");
+  };
+
   return (
     <>
       <header id="header" className="py-3">
@@ -24,7 +28,9 @@ const Navigation = ({ text }) => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Log Out</Dropdown.Item>
+                  <Dropdown.Item href="/admin/login" onClick={logout}>
+                    Log Out
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </div>

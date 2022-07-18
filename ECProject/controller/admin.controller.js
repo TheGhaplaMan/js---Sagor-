@@ -39,7 +39,7 @@ exports.createAdmin = async (req, res, next) => {
       .json({ status: "error", message: "Admin already exists" });
   }
 
-  const passHash = await bcrypt.hash(pass,10);
+  const passHash = await bcrypt.hash(pass, 10);
 
   const newAdmin = await Admin.create({ ...req.body, pass: passHash });
 
@@ -89,4 +89,35 @@ exports.getAdminsss = async (req, res, next) => {
   const findAllAdmins = await Admin.find();
   if (findAllAdmins === undefined) console.log("hehe");
   return res.status(200).json({ findAllAdmins });
+};
+
+exports.protect = async (req, res, next) => {
+  //verifying token existence
+  let token;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    token = req.headers.authorization.split(" ")[1];
+  }
+
+  if (!token) {
+    return res
+      .status(401)
+      .json({ status: "error", message: "Not logged in yet" });
+  }
+
+  //verifying token
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
+  //checking user
+  const currentUser = await Admin.findById(decoded.id);
+  if (!currentUser) {
+    return res
+      .status(404)
+      .json({ status: "error", message: "User Does Not Exist" });
+  }
+
+  req.user = currentUser;
+  next();
 };
