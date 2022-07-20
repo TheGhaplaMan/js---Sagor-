@@ -7,6 +7,7 @@ import RedButton from "../../components/Button/Redbutton";
 
 import Navigation from "../../components/Navbar/Navbar";
 import StatsCard from "../../components/StatsCard/StatsCard";
+import { get } from "../../apis/bebakApi";
 
 const Stats = () => {
   const [uData, setUData] = useState({});
@@ -16,32 +17,19 @@ const Stats = () => {
   const { id } = params;
   // console.log(id);
 
-  const apiDaki = async () => {
-    // const omuk = await axios.get(`http://localhost:4000/api/v1/admin/${id}`, {
-    //   Authorization: `Bearer ${localStorage.getItem("token")}`,
-    // });
-    const omuk = await axios.get(
-      `http://theghaplaman.herokuapp.com/api/v1/admin/${id}`,
-      { Authorization: `Bearer ${localStorage.getItem("token")}` }
-    );
-    console.log(omuk.data.findAdmin);
-    setUData(omuk.data.findAdmin);
-  };
-  const candidateDaki = async () => {
-    // const cenn = await axios.get("http://localhost:4000/api/v1/candidate", { Authorization: `Bearer ${localStorage.getItem("token")}`,});
-    const cenn = await axios.get(
-      "http://theghaplaman.herokuapp.com/api/v1/candidate",
-      { Authorization: `Bearer ${localStorage.getItem("token")}` }
-    );
-    // console.log(cenn.data[0].majorCandidates);
-    setCData(cenn.data[0].majorCandidates);
-  };
+  useEffect(() => {
+    const pailam = async () => {
+      const data = await get(`http://localhost:4000/api/v1/admin/${id}`);
+      // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
+      // console.log(data.findAdmin);
+      setUData(data.findAdmin);
 
-  useEffect(() => {
-    candidateDaki();
-  }, []);
-  useEffect(() => {
-    apiDaki();
+      const candidates = await get("http://localhost:4000/api/v1/candidate");
+      // const data = await get("http://theghaplaman.herokuapp.com/api//v1/candidate");
+      // console.log(candidates);
+      setCData(candidates[0].majorCandidates);
+    };
+    pailam();
   }, []);
 
   return (

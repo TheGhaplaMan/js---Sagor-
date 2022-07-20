@@ -5,6 +5,7 @@ import RedButton from "../../components/Button/Redbutton";
 import Navigation from "../../components/Navbar/Navbar";
 import QRCard from "../../components/QRCard/QRCard";
 import axios from "axios";
+import { get } from "../../apis/bebakApi";
 
 const VerifyVoter = () => {
   const [uData, setUData] = useState({});
@@ -13,18 +14,14 @@ const VerifyVoter = () => {
   const { id } = params;
   // console.log(id);
 
-  const apiDaki = async () => {
-    // const omuk = await axios.get(`http://localhost:4000/api/v1/admin/${id}`, { Authorization: `Bearer ${localStorage.getItem("token")}`,});
-    const omuk = await axios.get(
-      `http://theghaplaman.herokuapp.com/api/v1/admin/${id}`,
-      { Authorization: `Bearer ${localStorage.getItem("token")}` }
-    );
-    // console.log(omuk.data.findAdmin);
-    setUData(omuk.data.findAdmin);
-  };
-
   useEffect(() => {
-    apiDaki();
+    const pailam = async () => {
+      const data = await get(`http://localhost:4000/api/v1/admin/${id}`);
+      // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
+      // console.log(data.findAdmin);
+      setUData(data.findAdmin);
+    };
+    pailam();
   }, []);
 
   return (

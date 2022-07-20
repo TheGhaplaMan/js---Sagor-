@@ -1,54 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { get } from "../../apis/bebakApi";
 import RedButton from "../../components/Button/Redbutton";
 import Navigation from "../../components/Navbar/Navbar";
 
 const Dashboard = () => {
-  const [uData, setData] = useState({});
+  const [uData, setUData] = useState({});
   const [centData, setCData] = useState({});
   const params = useParams();
-  console.log(params + "hudai");
+  // console.log(params, "hudai");
 
   const { id } = params;
-  console.log(id);
-
-  const getAdmin = async () => {
-    // const res = await fetch(`http://localhost:4000/api/v1/admin/${id}`, {
-    const res = await fetch(
-      `http://theghaplaman.herokuapp.com/api/v1/admin/${id}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
-    const data = await res.json();
-    console.log(data.findAdmin);
-    setData(data.findAdmin);
-
-    const cId = data.findAdmin.centerId;
-    console.log(cId);
-    // const resp = await fetch(`http://localhost:4000/api/v1/center/${cId}`, {
-    const resp = await fetch(
-      `http://theghaplaman.herokuapp.com/api/v1/center/${cId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
-    const cData = await resp.json();
-    console.log(cData);
-    setCData(cData);
-  };
 
   useEffect(() => {
-    getAdmin();
+    const pailam = async () => {
+      const data = await get(`http://localhost:4000/api/v1/admin/${id}`);
+      // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
+      // console.log(data.findAdmin);
+      setUData(data.findAdmin);
+
+      const cId = data.findAdmin.centerId;
+
+      const cenn = await get(`http://localhost:4000/api/v1/center/${cId}`);
+      // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
+      // console.log(cenn);
+      setCData(cenn);
+    };
+    pailam();
   }, []);
 
   return (

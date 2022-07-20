@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { post } from "../../apis/bebakApi";
 import "./AdminInput.scss";
 
 const AdminLogin = ({ text }) => {
@@ -13,7 +14,7 @@ const AdminLogin = ({ text }) => {
 
   const loginClick = (e) => {
     const { name, value } = e.target;
-    console.log(e.target);
+    // console.log(e.target);
 
     setInfo({ ...info, [name]: value });
   };
@@ -23,22 +24,12 @@ const AdminLogin = ({ text }) => {
 
     const { email, pass } = info;
     try {
-      // const res = await fetch("http://localhost:4000/api/v1/admin/login", {
-      const res = await fetch(
-        "http://theghaplaman.herokuapp.com/api/v1/admin/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            pass,
-          }),
-        }
-      );
+      const res = await post("http://localhost:4000/api/v1/admin/login", {
+        email,
+        pass,
+      });
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       if (data.status == "success") {
         localStorage.setItem("token", data.token);
       }
