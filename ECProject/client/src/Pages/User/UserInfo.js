@@ -10,7 +10,7 @@ const UserInfo = () => {
       <div className="text-center mt-5">
 
       </div>
-      {/* <InfoCard linkBoshuk="/user/scan" /> */}
+      <InfoCard linkBoshuk="/user/scan" />
     </>
   );
 };
