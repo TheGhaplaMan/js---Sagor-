@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.f9423b79.css",
-    "main.js": "/static/js/main.0f89df98.js",
+    "main.js": "/static/js/main.0cb1a1b8.js",
     "static/media/Sagor-Mahtab.jpg": "/static/media/Sagor-Mahtab.9e3a9ac27f5441274c39.jpg",
     "index.html": "/index.html",
     "main.f9423b79.css.map": "/static/css/main.f9423b79.css.map",
-    "main.0f89df98.js.map": "/static/js/main.0f89df98.js.map"
+    "main.0cb1a1b8.js.map": "/static/js/main.0cb1a1b8.js.map"
   },
   "entrypoints": [
     "static/css/main.f9423b79.css",
-    "static/js/main.0f89df98.js"
+    "static/js/main.0cb1a1b8.js"
   ]
 }
