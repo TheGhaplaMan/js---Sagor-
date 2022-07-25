@@ -32,12 +32,15 @@ const AdminLogin = ({ text }) => {
       // console.log(data);
       if (data.status == "success") {
         localStorage.setItem("token", data.token);
+        // console.log(data.token);
+        if (data.token) {
+          navigate(`/admin/dashboard/${data.userData._id}`);
+        } else {
+          navigate("/admin/login");
+        }
       }
       if (!data || res.status === 403 || res.status === 404) {
         alert(data.message);
-      }
-      if (data.status === "success") {
-        navigate(`/admin/dashboard/${data.userData._id}`);
       }
     } catch (err) {
       alert(err);

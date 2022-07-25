@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { Container, Row } from "react-bootstrap";
@@ -13,6 +13,8 @@ const Stats = () => {
   const [uData, setUData] = useState({});
   const [cData, setCData] = useState([]);
 
+  const naviggg = useNavigate();
+
   const params = useParams();
   const { id } = params;
   // console.log(id);
@@ -22,6 +24,7 @@ const Stats = () => {
       const data = await get(`http://localhost:4000/api/v1/admin/${id}`);
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(data.findAdmin);
+
       setUData(data.findAdmin);
 
       const candidates = await get("http://localhost:4000/api/v1/candidate");
@@ -31,6 +34,7 @@ const Stats = () => {
     };
     pailam();
   }, []);
+  // console.log(localStorage.getItem("token"));
 
   return (
     <>

@@ -18,6 +18,7 @@ const Dashboard = () => {
       const data = await get(`http://localhost:4000/api/v1/admin/${id}`);
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(data.findAdmin);
+      // console.log(data);
       setUData(data.findAdmin);
 
       const cId = data.findAdmin.centerId;
@@ -29,6 +30,7 @@ const Dashboard = () => {
     };
     pailam();
   }, []);
+  // console.log(localStorage.getItem("token"));
 
   return (
     <>
