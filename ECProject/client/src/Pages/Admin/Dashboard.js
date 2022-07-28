@@ -38,21 +38,25 @@ const Dashboard = () => {
       <Container>
         <div className="text-end mt-3">
           <RedButton toPage="/admin/create" btnName="Create New" />
+          <h5 className="text-start display-5 mt-2 pt-5">
+            {centData.centerName}
+          </h5>
+          <h4 className="text-start mt-1 ">Room No {uData.roomNumber}</h4>
         </div>
 
-        <h2 className="text-center fw-bold display-4 mt-2 mb-1">
+        <h2 className="text-center fw-semibold display-5 mt-2 mb-1">
           {uData.userName}
         </h2>
-        <h4 className="text-center mt-1 pt-1">Room No {uData.roomNumber}</h4>
-        <h4 className="text-end mt-1 pt-1">
+       
+        <h4 className="text-end mt-1">
           Total Voters{" "}
           <span className="text-danger display-6"> {uData.totalVoter}</span>
         </h4>
-        <h4 className="text-end mt-1 pt-1">
+        <h4 className="text-end ">
           <span className="text-danger display-6">{uData.votedAlready} </span>
           Votes Colleceted
         </h4>
-        <div className="text-center mt-1 mb-3">
+        <div className="text-center mb-1">
           <br /> <br />
           <RedButton
             toPage={`/admin/vote/${uData._id}`}
@@ -68,10 +72,6 @@ const Dashboard = () => {
             toPage={`/admin/stats/${uData._id}`}
             btnName="Center Stats"
           />
-          <br /> <br />
-          <h4 className="text-center display-3 fw-bold mt-3 pt-5">
-            {centData.centerName}
-          </h4>
         </div>
       </Container>
     </>
