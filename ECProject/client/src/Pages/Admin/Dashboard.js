@@ -36,9 +36,9 @@ const Dashboard = () => {
     <>
       <Navigation text="Election" />
       <Container>
-        {/* <div className="text-end mt-3">
+        <div className="text-end mt-3">
           <RedButton toPage="/admin/create" btnName="Create New" />
-        </div> */}
+        </div>
 
         <h2 className="text-center fw-bold display-4 mt-2 mb-1">
           {uData.userName}

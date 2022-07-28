@@ -22,7 +22,7 @@ import Scan from "./Pages/User/Scan";
 import Success from "./Pages/User/Success";
 import VoteConfirm from "./Pages/User/VoteConfirm";
 import CreateAdmin from "./Pages/Admin/CreateAdmin";
-import axios from "axios";
+import { AdmPrivateRoute } from "./components/PrivateRoute";
 
 const App = () => {
   // console.log(localStorage.getItem("token"));
@@ -31,27 +31,19 @@ const App = () => {
     <>
       <Routes>
         {/* Admin */}
-        <Route
-          path="/admin/dashboard/:id"
-          element={tokko ? <Dashboard /> : <Navigate to="/admin/login" />}
-        />
-        <Route
-          path="/admin/create"
-          element={tokko ? <CreateAdmin /> : <Navigate to="/admin/login" />}
-        />
+        <Route exact path="/admin" element={<AdmPrivateRoute />}>
+          <Route exact path="/admin/dashboard/:id" element={<Dashboard />} />
+          <Route exact path="/admin/stats/:id" element={<Stats />} />
+          <Route exact path="/admin/vote/:id" element={<VoteScreen />} />
+          <Route exact path="/admin/create" element={<CreateAdmin />} />
+          <Route
+            exact
+            path="/admin/verify-voter/:id"
+            element={<VerifyVoter />}
+          />
+        </Route>
+
         <Route path="/admin/login" element={<Login />} />
-        <Route
-          path="/admin/verify-voter/:id"
-          element={tokko ? <VerifyVoter /> : <Navigate to="/admin/login" />}
-        />
-        <Route
-          path="/admin/vote/:id"
-          element={tokko ? <VoteScreen /> : <Navigate to="/admin/login" />}
-        />
-        <Route
-          path="/admin/stats/:id"
-          element={tokko ? <Stats /> : <Navigate to="/admin/login" />}
-        />
 
         {/* Voter End */}
         <Route path="/" element={<UserInfo />} />
@@ -61,7 +53,7 @@ const App = () => {
         <Route path="/user/success" element={<Success />} />
         <Route path="/user/confirm-vote" element={<VoteConfirm />} />
         {/* hudai */}
-        {/* <Route path="/*" element={<Error />} /> */}
+        <Route path="/*" element={<Error />} />
       </Routes>
     </>
   );

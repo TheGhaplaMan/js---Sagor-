@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Row, Button } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { get } from "../../apis/bebakApi";
 import RedButton from "../Button/Redbutton";
 
 const AdminCreate = () => {
@@ -25,11 +26,13 @@ const AdminCreate = () => {
     const { name, email, pass, room, tv, centerId } = info;
     try {
       const res = await fetch(
-        "https://theghaplaman.herokuapp.com/api/v1/admin/new-admin",
+        // "https://theghaplaman.herokuapp.com/api/v1/admin/new-admin",
+        "http://localhost:4000/api/v1/admin/new-admin",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
           body: JSON.stringify({
             userName: name,
@@ -37,7 +40,7 @@ const AdminCreate = () => {
             pass,
             roomNumber: room,
             totalVoter: tv,
-            centerId,
+            centerId: selectedId,
           }),
         }
       );
@@ -54,6 +57,18 @@ const AdminCreate = () => {
       alert(err);
     }
   };
+
+  const [selectedId, setCentId] = useState("");
+
+  const [centData, setCentData] = useState([]);
+  useEffect(() => {
+    const pailam = async () => {
+      const data = await get("http://localhost:4000/api/v1/center");
+      setCentData(data);
+      // console.log(data);
+    };
+    pailam();
+  }, []);
 
   return (
     <>
@@ -115,15 +130,19 @@ const AdminCreate = () => {
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-3">
-                  <Form.Label>Center</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="centerId"
-                    value={info.centerId}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
+                <Form.Select
+                  onChange={(e) => setCentId(e.target.value)}
+                  className="mb-3"
+                >
+                  <option>Center</option>
+                  {centData.map((element) => {
+                    return (
+                      <option value={element._id.toString()}>
+                        {element.centerName}
+                      </option>
+                    );
+                  })}
+                </Form.Select>
               </Row>
 
               <div className="d-grid gap-2">

@@ -87,7 +87,7 @@ exports.getAdmin = async (req, res, next) => {
 
 exports.getAdminsss = async (req, res, next) => {
   const findAllAdmins = await Admin.find();
-  if (findAllAdmins === undefined) console.log("hehe");
+  // if (findAllAdmins === undefined) console.log("hehe");
   return res.status(200).json({ findAllAdmins });
 };
 

@@ -6,6 +6,7 @@ import "./AdminInput.scss";
 
 const AdminLogin = ({ text }) => {
   const navigate = useNavigate();
+  // console.log(navigate);
 
   const [info, setInfo] = useState({
     email: "",
@@ -35,8 +36,10 @@ const AdminLogin = ({ text }) => {
         // console.log(data.token);
         if (data.token) {
           navigate(`/admin/dashboard/${data.userData._id}`);
+          // console.log(data.userData._id);
+          // navigate("/user/success");
         } else {
-          navigate("/admin/login");
+          navigate("admin/login");
         }
       }
       if (!data || res.status === 403 || res.status === 404) {
