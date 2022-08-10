@@ -46,7 +46,7 @@ const AdminCreate = () => {
       );
 
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       if (!data || res.status === 403) {
         alert(data.message);
       }
