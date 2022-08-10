@@ -6,6 +6,7 @@ import Navigation from "../../components/Navbar/Navbar";
 import QRCard from "../../components/QRCard/QRCard";
 import { qrCardData } from "../../data/data";
 import axios from "axios";
+import { get } from "../../apis/bebakApi";
 
 const VoteScreen = () => {
   const [data, setData] = useState(qrCardData);
@@ -13,6 +14,7 @@ const VoteScreen = () => {
   const cardShuffle = data.sort(() => Math.random() - Math.random());
 
   const [uData, setUData] = useState({});
+  const [centData, setCData] = useState({});
 
   const params = useParams();
   const { id } = params;
@@ -39,8 +41,14 @@ const VoteScreen = () => {
     // console.log(data.findAdmin);
     setUData(data.findAdmin);
 
+    const cId = data.findAdmin.centerId;
+
     // console.log(omuk.data.findAdmin);
     // setUData(omuk.data.findAdmin);
+    const cenn = await get(`http://localhost:4000/api/v1/center/${cId}`);
+    // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
+    // console.log(cenn);
+    setCData(cenn);
   };
 
   useEffect(() => {
@@ -61,6 +69,9 @@ const VoteScreen = () => {
               return <QRCard key={element.id} {...element} />;
             })}
           </Row>
+          <h4 className="text-center display-3 fw-bold mt-3 pt-5">
+            {centData.centerName}
+          </h4>
         </div>
       </Container>
     </>

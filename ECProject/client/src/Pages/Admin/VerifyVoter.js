@@ -9,6 +9,7 @@ import { get } from "../../apis/bebakApi";
 
 const VerifyVoter = () => {
   const [uData, setUData] = useState({});
+  const [centData, setCData] = useState({});
 
   const params = useParams();
   const { id } = params;
@@ -20,7 +21,16 @@ const VerifyVoter = () => {
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(data.findAdmin);
       setUData(data.findAdmin);
+      const cId = data.findAdmin.centerId;
+
+      // console.log(omuk.data.findAdmin);
+      // setUData(omuk.data.findAdmin);
+      const cenn = await get(`http://localhost:4000/api/v1/center/${cId}`);
+      // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
+      // console.log(cenn);
+      setCData(cenn);
     };
+
     pailam();
   }, []);
 
@@ -35,6 +45,9 @@ const VerifyVoter = () => {
           <RedButton toPage={`/admin/dashboard/${id}`} btnName="Home" />
           <QRCard title="Scan here" imgSrc={uData.adminQR} />
         </div>
+        <h4 className="text-center display-3 fw-bold mt-3 pt-5">
+          {centData.centerName}
+        </h4>
       </Container>
     </>
   );
