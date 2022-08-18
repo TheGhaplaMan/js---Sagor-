@@ -40,7 +40,7 @@ const Stats = () => {
     <>
       <Navigation text="Election" />
       <Container>
-        <h2 className="text-center mt-5 pt-5">{uData.userName}</h2>
+        <h2 className="text-center mt-3 pt-3">{uData.userName}</h2>
         <h4 className="text-end mt-1 pt-1">Room No {uData.roomNumber}</h4>
 
         <div className="text-center">
