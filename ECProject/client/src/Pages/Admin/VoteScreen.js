@@ -69,9 +69,9 @@ const VoteScreen = () => {
               return <QRCard key={element.id} {...element} />;
             })}
           </Row>
-          <h4 className="text-center display-3 fw-bold mt-3 pt-5">
+          <h6 className="text-center display-3 fw-bold mt-3 pt-5">
             {centData.centerName}
-          </h4>
+          </h6>
         </div>
       </Container>
     </>

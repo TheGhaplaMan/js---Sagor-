@@ -23,9 +23,7 @@ const InfoCard = ({ linkBoshuk }) => {
                     <strong>Sagor Mahtab xD</strong>
                   </Card.Title>
 
-                  <p>
-                    <strong>DOB : </strong> date/boshbe/ekhane
-                  </p>
+
                   <p>
                     <strong>Address : </strong> Address Jabe ekhane
                   </p>
@@ -33,9 +31,7 @@ const InfoCard = ({ linkBoshuk }) => {
                   <p>
                     <strong>Center : </strong> Omuk Center
                   </p>
-                  <p>
-                    <strong>Room : </strong> 103
-                  </p>
+                  
                   <RedButton toPage={linkBoshuk} btnName="Vote" />
                 </Card.Body>
               </Card>

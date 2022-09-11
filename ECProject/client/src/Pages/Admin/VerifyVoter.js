@@ -45,9 +45,9 @@ const VerifyVoter = () => {
           <RedButton toPage={`/admin/dashboard/${id}`} btnName="Home" />
           <QRCard title="Scan here" imgSrc={uData.adminQR} />
         </div>
-        <h4 className="text-center display-3 fw-bold mt-3 pt-5">
+        <h6 className="text-center display-3 fw-bold mt-3 pt-5">
           {centData.centerName}
-        </h4>
+        </h6>
       </Container>
     </>
   );

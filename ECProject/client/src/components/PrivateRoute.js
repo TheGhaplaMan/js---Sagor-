@@ -6,7 +6,7 @@ export const AdmPrivateRoute = () => {
   return auth ? <Outlet /> : <Navigate to="/admin/login" />;
 };
 
-// export const VoterPrivateRoute = () => {
-//   const auth = localStorage.getItem("token");
-//   return auth ? <Outlet /> : <Navigate to="/voter/login" />;
-// };
+export const VoterPrivateRoute = () => {
+  const auth = localStorage.getItem("token");
+  return auth ? <Outlet /> : <Navigate to="/login" />;
+};

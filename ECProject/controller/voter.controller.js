@@ -34,10 +34,10 @@ const upload = multer({ storage: storage });
 exports.upImage = upload.single("voterImage");
 
 exports.createVoter = async (req, res, next) => {
-  const { email, voterContact } = req.body;
+  const { email, voterContact, voterNID } = req.body;
   //finding user
   let foundVoter = await Voter.findOne({
-    $and: [{ email: email, voterContact: voterContact }],
+    $or: [{ email: email, voterContact: voterContact, voterNID: voterNID  }],
   });
   if (foundVoter) {
     return res

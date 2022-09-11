@@ -22,7 +22,8 @@ import Scan from "./Pages/User/Scan";
 import Success from "./Pages/User/Success";
 import VoteConfirm from "./Pages/User/VoteConfirm";
 import CreateAdmin from "./Pages/Admin/CreateAdmin";
-import { AdmPrivateRoute } from "./components/PrivateRoute";
+import { AdmPrivateRoute, VoterPrivateRoute } from "./components/PrivateRoute";
+import VoterCreate from "./Pages/User/CreateVoter/VoterCreate";
 
 const App = () => {
   // console.log(localStorage.getItem("token"));
@@ -46,13 +47,18 @@ const App = () => {
         <Route path="/admin/login" element={<Login />} />
 
         {/* Voter End */}
+        <Route path="/login" element={<VoterLogin />} />
+        <Route path="/user/create" element={<VoterCreate />} />
+        {/* <Route exact path="/user" element={<VoterPrivateRoute />}> */}
+
         <Route path="/" element={<UserInfo />} />
-        <Route path="/user/login" element={<VoterLogin />} />
         <Route path="/user/otp" element={<OTP />} />
         <Route path="/user/scan" element={<Scan />} />
         <Route path="/user/success" element={<Success />} />
         <Route path="/user/confirm-vote" element={<VoteConfirm />} />
         {/* hudai */}
+        {/* </Route> */}
+
         <Route path="/*" element={<Error />} />
       </Routes>
     </>

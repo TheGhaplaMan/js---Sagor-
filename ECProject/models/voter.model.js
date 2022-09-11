@@ -36,15 +36,10 @@ const voterSchema = new mongoose.Schema({
       },
     },
   },
-  voterDOB: {
-    type: Date,
-    required: true,
-  },
+
   voterAddress: {
-    thana: String,
-    district: String,
-    zip: Number,
-    division: String,
+    type: String,
+    required: true,
   },
   voterImage: {
     type: String,
@@ -57,11 +52,21 @@ const voterSchema = new mongoose.Schema({
     },
     voteDate: Date,
   },
-  otpHash: String,
-  centerId: {
-    type: mongoose.Types.ObjectId,
+  voterPin: {
+    type: String,
+    required: true,
+    maxlength: 7,
+    minlength: 4,
+    validate: {
+      validator: function (val) {
+        if (val>this.maxlength || val<this.minlength) {
+          return false;
+        }
+        return true;
+      },
+    },
   },
-  adminId: {
+  centerId: {
     type: mongoose.Types.ObjectId,
   },
 });

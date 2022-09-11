@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
+import RedButton from "../Button/Redbutton";
 import "./UserInput.scss";
 
 const UserInput = ({ text }) => {
@@ -16,11 +17,13 @@ const UserInput = ({ text }) => {
                 </Form.Group>
                 <Form.Group className="mb-3 shadow py-2">
                   <Form.Control
-                    type="text"
-                    placeholder="Email"
-                    name="email"
+                    type="password"
+                    placeholder="PIN"
+                    name="pin"
                   />
                 </Form.Group>
+
+                
 
                 <div className="text-center">
                   <Button type="submit" className="btnStyle text-black fw-bold">
@@ -28,6 +31,9 @@ const UserInput = ({ text }) => {
                   </Button>
                 </div>
               </Form>
+              <div className="text-center mt-3">
+              <RedButton toPage={"/user/create"} btnName="Sign Up" />
+              </div>
             </Col>
           </Row>
         </Container>
