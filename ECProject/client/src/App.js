@@ -31,6 +31,7 @@ const App = () => {
   return (
     <>
       <Routes>
+      <Route exact path="/" element={<Navigate replace to="/login" />} />
         {/* Admin */}
         <Route exact path="/admin" element={<AdmPrivateRoute />}>
           <Route exact path="/admin/dashboard/:id" element={<Dashboard />} />
@@ -49,15 +50,17 @@ const App = () => {
         {/* Voter End */}
         <Route path="/login" element={<VoterLogin />} />
         <Route path="/user/create" element={<VoterCreate />} />
-        {/* <Route exact path="/user" element={<VoterPrivateRoute />}> */}
 
-        <Route path="/" element={<UserInfo />} />
+        <Route exact path="/user" element={<VoterPrivateRoute />}>
+
+        
+        <Route path="/user/:id" element={<UserInfo />} />
         <Route path="/user/otp" element={<OTP />} />
         <Route path="/user/scan" element={<Scan />} />
         <Route path="/user/success" element={<Success />} />
         <Route path="/user/confirm-vote" element={<VoteConfirm />} />
         {/* hudai */}
-        {/* </Route> */}
+        </Route>
 
         <Route path="/*" element={<Error />} />
       </Routes>

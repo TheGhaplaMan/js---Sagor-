@@ -19,45 +19,52 @@ const VoterCreate = () => {
     pin: "",
     centerid: "",
   });
+  const [selectedId, setCentId] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInfo({ ...info, [name]: value });
   };
+  const handleFile = (e) => {
+    const files = e.target.files;
+    // console.log("jhinka", files[0])
+    setInfo({...info, img: files[0]})
+  };
 
   const formSubmit = async (e) => {
     e.preventDefault();
-    const { name, email, nid, contact, address, img, pin, centerId } = info;
+    const { name, email, nid, contact, address, img, pin} = info;
+    const formData = new FormData();
+  
+      formData.append("voterName", name);
+      formData.append("voterNID", nid);
+      formData.append("email", email);
+      formData.append("voterContact", contact);
+      formData.append("voterAddress", address);
+      formData.append("voterImage", img);
+      formData.append("voterPin", `${pin}`);
+      formData.append("centerId", selectedId);
+
+      // console.log("img lg", img[0]  , img.rawFile)
+
     try {
       const res = await fetch(
         // "https://theghaplaman.herokuapp.com/api/v1/admin/new-admin",
         "http://localhost:4000/api/v1/voter/new-voter",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify({
-            voterName: name,
-            voterNID: nid,
-            email,
-            voterContact: contact,
-            voterAddress: address,
-            voterImage: img,
-            voterPin: pin,
-            centerId: selectedId,
-          }),
+          body: formData
         }
       );
     
 
       const data = await res.json();
-      // console.log(data);
+      console.log(data);
       if (!data || res.status === 403) {
         alert(data.message);
       }
       if (data.status === "success") {
+        
         navigate("/login");
       }
     } catch (err) {
@@ -65,7 +72,7 @@ const VoterCreate = () => {
     }
   };
 
-  const [selectedId, setCentId] = useState("");
+
 
   const [centData, setCentData] = useState([]);
   useEffect(() => {
@@ -142,8 +149,7 @@ const VoterCreate = () => {
                   <Form.Control
                     type="file"
                     name="img"
-                    value={info.img}
-                    onChange={handleChange}
+                    onChange={handleFile}
                   />
                 </Form.Group>
 

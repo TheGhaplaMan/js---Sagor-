@@ -28,7 +28,7 @@ const Navigation = ({ text }) => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item href="/admin/login" onClick={logout}>
+                  <Dropdown.Item href="/login" onClick={logout}>
                     Log Out
                   </Dropdown.Item>
                 </Dropdown.Menu>

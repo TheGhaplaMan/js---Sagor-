@@ -44,14 +44,13 @@ exports.createVoter = async (req, res, next) => {
       .status(403)
       .json({ status: "error", message: "Already ase bhai" });
   }
-
+  console.log("edai", req.body)
   const newVoter = await Voter.create({
     ...req.body,
     voterImage: `img/${req.file.originalname}`,
     centerId: Types.ObjectId(req.body.centerId),
-    adminId: Types.ObjectId(req.body.adminId),
   });
-  res.status(200).json(newVoter);
+  res.status(200).json({status: "success", data: newVoter, message: "Proceed to login"});
 };
 
 exports.getVotersInCenter = async (req, res, next) => {
@@ -97,25 +96,18 @@ exports.verifyVoter = async (req, res, next) => {
 };
 
 exports.login = async (req, res, next) => {
-  const { voterNID, email } = req.body;
-
+  const { voterNID, voterPin } = req.body;
+console.log(voterNID, voterPin, "chakkichua")
   //finding user
 
-  const voterFound = await Voter.findOne({ voterNID: voterNID });
+  const voterFound = await Voter.findOne({ voterNID: voterNID, voterPin: voterPin });
 
   if (!voterFound) {
-    return res.status(404).json({ status: "error", message: "wrong NID" });
+    return res.status(404).json({ status: "error", message: "wrong NID or Pin" });
   }
+  const token = genToken(voterFound);
 
-  const OTP = Math.floor(10000 + Math.random() * 90000).toString();
-  const otpHash = await bcrypt.hash(OTP, 10);
-  voterFound.otpHash = otpHash;
-
-  await voterFound.save();
-
-  const subject = "Vote OTP";
-  await new Email(email).send(OTP, subject);
-  res.status(200).json({ status: "success", data: { voterNID } });
+  res.status(200).json({ status: "success", token, data: voterFound  });
 };
 
 exports.otpVerify = async (req, res, next) => {
