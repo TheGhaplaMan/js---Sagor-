@@ -149,6 +149,20 @@ exports.hasVoted = async (req, res, next) => {
   });
 };
 
+exports.getOneVoter = async (req, res, next) => {
+  console.log("HEHE", req.params.voterId)
+  const findVoter = await Voter.findById(req.params.voterId);
+  console.log(findVoter)
+  if (!findVoter) {
+    return res.status(404).json({status: "Error", message: "mamu nai"})
+  }
+  return res.status(200).json({
+    status: "success",
+    findVoter,
+    message: "mamu re pailam",
+  });
+}
+
 exports.protect = async (req, res, next) => {
   //verifying token existence
   let token;
