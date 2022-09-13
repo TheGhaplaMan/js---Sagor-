@@ -19,9 +19,9 @@ const Scanner = () => {
       const result = await axios.get(
         `https://ucs-goma-backend.herokuapp.com/payement/scan?matricule=${qr}&forThisYear=1`
       );
-      console.log("scanned code", qr);
+      // console.log("scanned code", qr);
       const { message, payement } = result.data;
-      console.log(payement);
+      // console.log(payement);
       if (!message) {
         setCode({
           text: payement.matricule,
@@ -42,14 +42,14 @@ const Scanner = () => {
         setDiaglog(true);
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 
   const handleScan = async (scanData) => {
-    console.log(`loaded data data`, scanData);
+    // console.log(`loaded data data`, scanData);
     if (scanData && scanData !== "" && !showDialog && !processing) {
-      console.log(`loaded >>>`, scanData);
+      // console.log(`loaded >>>`, scanData);
       // setPrecScan(scanData);
       await fetchData({ qr: scanData });
     }
@@ -59,7 +59,7 @@ const Scanner = () => {
   };
   return (
     <div className="App">
-      <h1 className="mb-5">Sagor Mahtab</h1>
+      <h3 className="mb-5">Scan Here</h3>
       {/* <h2>
         Last Scan:{precScan}
         {selected}

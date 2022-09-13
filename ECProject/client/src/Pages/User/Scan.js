@@ -4,6 +4,7 @@ import RedButton from "../../components/Button/Redbutton";
 import Scanner from "../../components/Scanner/Scanner";
 
 const Scan = () => {
+  
   return (
     <>
       <Navigation text="Election" />
