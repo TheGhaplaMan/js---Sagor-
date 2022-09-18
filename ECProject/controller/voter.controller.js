@@ -97,7 +97,7 @@ exports.verifyVoter = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
   const { voterNID, voterPin } = req.body;
-console.log(voterNID, voterPin, "chakkichua")
+// console.log(voterNID, voterPin, "chakkichua")
   //finding user
 
   const voterFound = await Voter.findOne({ voterNID: voterNID, voterPin: voterPin });
@@ -150,9 +150,9 @@ exports.hasVoted = async (req, res, next) => {
 };
 
 exports.getOneVoter = async (req, res, next) => {
-  console.log("HEHE", req.params.voterId)
+  // console.log("HEHE", req.params.voterId)
   const findVoter = await Voter.findById(req.params.voterId);
-  console.log(findVoter)
+  // console.log(findVoter)
   if (!findVoter) {
     return res.status(404).json({status: "Error", message: "mamu nai"})
   }

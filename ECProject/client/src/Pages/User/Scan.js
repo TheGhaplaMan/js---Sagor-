@@ -7,7 +7,7 @@ const Scan = () => {
   
   return (
     <>
-      <Navigation text="Election" />
+      <Navigation text="Scan" />
       <div className="text-center mb-5 mt-5">
 
       <RedButton toPage="/" btnName="Home" />

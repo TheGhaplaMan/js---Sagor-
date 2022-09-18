@@ -6,7 +6,7 @@ import RedButton from "../../components/Button/Redbutton";
 const UserInfo = () => {
   return (
     <>
-      <Navigation text="Election" />
+      <Navigation text="Profile" />
       <div className="text-center mt-5">
        
       </div>
