@@ -3,8 +3,7 @@ import { Form, Row, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { get } from "../../../apis/bebakApi";
 import RedButton from "../../../components/Button/Redbutton";
-
-
+import Navigation from "../../../components/Navbar/Navbar";
 
 const VoterCreate = () => {
   const navigate = useNavigate();
@@ -28,24 +27,24 @@ const VoterCreate = () => {
   const handleFile = (e) => {
     const files = e.target.files;
     // console.log("jhinka", files[0])
-    setInfo({...info, img: files[0]})
+    setInfo({ ...info, img: files[0] });
   };
 
   const formSubmit = async (e) => {
     e.preventDefault();
-    const { name, email, nid, contact, address, img, pin} = info;
+    const { name, email, nid, contact, address, img, pin } = info;
     const formData = new FormData();
-  
-      formData.append("voterName", name);
-      formData.append("voterNID", nid);
-      formData.append("email", email);
-      formData.append("voterContact", contact);
-      formData.append("voterAddress", address);
-      formData.append("voterImage", img);
-      formData.append("voterPin", `${pin}`);
-      formData.append("centerId", selectedId);
 
-      // console.log("img lg", img[0]  , img.rawFile)
+    formData.append("voterName", name);
+    formData.append("voterNID", nid);
+    formData.append("email", email);
+    formData.append("voterContact", contact);
+    formData.append("voterAddress", address);
+    formData.append("voterImage", img);
+    formData.append("voterPin", `${pin}`);
+    formData.append("centerId", selectedId);
+
+    // console.log("img lg", img[0]  , img.rawFile)
 
     try {
       const res = await fetch(
@@ -53,10 +52,9 @@ const VoterCreate = () => {
         "http://localhost:4000/api/v1/voter/new-voter",
         {
           method: "POST",
-          body: formData
+          body: formData,
         }
       );
-    
 
       const data = await res.json();
       console.log(data);
@@ -64,15 +62,12 @@ const VoterCreate = () => {
         alert(data.message);
       }
       if (data.status === "success") {
-        
         navigate("/login");
       }
     } catch (err) {
       alert(err);
     }
   };
-
-
 
   const [centData, setCentData] = useState([]);
   useEffect(() => {
@@ -86,6 +81,7 @@ const VoterCreate = () => {
 
   return (
     <>
+      <Navigation text="Voter Sign Up" />
       <div className="container my-5">
         <div className="text-center  mb-5">
           <RedButton toPage="/login" btnName="Login" />
@@ -146,11 +142,7 @@ const VoterCreate = () => {
 
                 <Form.Group className="mb-3">
                   <Form.Label>Image</Form.Label>
-                  <Form.Control
-                    type="file"
-                    name="img"
-                    onChange={handleFile}
-                  />
+                  <Form.Control type="file" name="img" onChange={handleFile} />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
