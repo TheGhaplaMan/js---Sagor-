@@ -8,7 +8,6 @@ const bcrypt = require("bcryptjs");
 const Admin = require("../models/admin.model");
 const Center = require("../models/center.model");
 
-
 function genToken(user) {
   return jwt.sign(
     {
@@ -37,20 +36,22 @@ exports.createVoter = async (req, res, next) => {
   const { email, voterContact, voterNID } = req.body;
   //finding user
   let foundVoter = await Voter.findOne({
-    $or: [{ email: email, voterContact: voterContact, voterNID: voterNID  }],
+    $or: [{ email: email, voterContact: voterContact, voterNID: voterNID }],
   });
   if (foundVoter) {
     return res
       .status(403)
       .json({ status: "error", message: "Already ase bhai" });
   }
-  console.log("edai", req.body)
+  console.log("edai", req.body);
   const newVoter = await Voter.create({
     ...req.body,
     voterImage: `img/${req.file.originalname}`,
     centerId: Types.ObjectId(req.body.centerId),
   });
-  res.status(200).json({status: "success", data: newVoter, message: "Proceed to login"});
+  res
+    .status(200)
+    .json({ status: "success", data: newVoter, message: "Proceed to login" });
 };
 
 exports.getVotersInCenter = async (req, res, next) => {
@@ -97,17 +98,22 @@ exports.verifyVoter = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
   const { voterNID, voterPin } = req.body;
-// console.log(voterNID, voterPin, "chakkichua")
+  // console.log(voterNID, voterPin, "chakkichua")
   //finding user
 
-  const voterFound = await Voter.findOne({ voterNID: voterNID, voterPin: voterPin });
+  const voterFound = await Voter.findOne({
+    voterNID: voterNID,
+    voterPin: voterPin,
+  });
 
   if (!voterFound) {
-    return res.status(404).json({ status: "error", message: "wrong NID or Pin" });
+    return res
+      .status(404)
+      .json({ status: "error", message: "wrong NID or Pin" });
   }
   const token = genToken(voterFound);
 
-  res.status(200).json({ status: "success", token, data: voterFound  });
+  res.status(200).json({ status: "success", token, data: voterFound });
 };
 
 exports.otpVerify = async (req, res, next) => {
@@ -131,9 +137,10 @@ exports.otpVerify = async (req, res, next) => {
 
 //TODO: res main jaygay pathano baki
 exports.hasVoted = async (req, res, next) => {
-  const centerid = req.user.centerId;
-  const candidateId = req.body.candidateId;
-  const voterId = req.user._id;
+  const voterId = req.params.id;
+  const Votter = await Voter.findById(voterId);
+
+  const centerId = Votter.centerId;
 
   const updateVoteStatus = await Voter.findByIdAndUpdate(voterId, {
     voteStatus: {
@@ -141,12 +148,13 @@ exports.hasVoted = async (req, res, next) => {
       voteDate: new Date(Date.now()),
     },
   });
+  const C = await Center.findById(centerId);
+  C.totalVote = C.totalVote++;
+  await C.save();
 
-  const candidateVoteUpdate = await Center.findByIdAndUpdate(centerid, {
-    candidates: {
-      voteReceived: voteRecieved++,
-    },
-  });
+  res
+    .status(200)
+    .json({ status: "success", message: "Your Vote has been Confirmed" });
 };
 
 exports.getOneVoter = async (req, res, next) => {
@@ -154,14 +162,14 @@ exports.getOneVoter = async (req, res, next) => {
   const findVoter = await Voter.findById(req.params.voterId);
   // console.log(findVoter)
   if (!findVoter) {
-    return res.status(404).json({status: "Error", message: "mamu nai"})
+    return res.status(404).json({ status: "Error", message: "mamu nai" });
   }
   return res.status(200).json({
     status: "success",
     findVoter,
     message: "mamu re pailam",
   });
-}
+};
 
 exports.protect = async (req, res, next) => {
   //verifying token existence

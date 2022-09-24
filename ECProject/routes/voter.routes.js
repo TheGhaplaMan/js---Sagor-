@@ -15,8 +15,6 @@ router.post(
   voterController.verifyVoter
 );
 
-router.post("/otp-verify", voterController.otpVerify);
-
-router.post("/vote", voterController.protect, voterController.hasVoted);
+router.post("/vote/:id", voterController.protect, voterController.hasVoted);
 
 module.exports = router;

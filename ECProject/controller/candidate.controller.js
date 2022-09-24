@@ -39,7 +39,7 @@ exports.getCandidates = async (req, res, next) => {
 
 exports.getOneCandidate = async (req, res, next) => {
   const getOneCandidate = await Candidates.findById(req.params.candidateId);
-  res.status(200).json(this.getOneCandidate);
+  res.status(200).json(getOneCandidate);
 };
 
 // exports.updateCenterInfo = async (req, res, next) => {
@@ -52,3 +52,13 @@ exports.getOneCandidate = async (req, res, next) => {
 //   );
 //   res.status(200).json(updateCenterInfo);
 // };
+
+exports.confirmVote = async (req, res, next) => {
+  const candidate = await Candidates.findById(req.params.candidateId);
+
+  candidate.voteReceived = candidate.voteReceived++;
+
+  await candidate.save();
+
+  res.status(200).json({ status: "success", message: "Vote confirmed" });
+};
