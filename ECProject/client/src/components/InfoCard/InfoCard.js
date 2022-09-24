@@ -16,7 +16,9 @@ const InfoCard = ({ linkBoshuk }) => {
 
   useEffect(() => {
     const pailam = async () => {
-      const vData = await get(`http://localhost:4000/api/v1/voter/profile/${id}`);
+      const vData = await get(
+        `https://banglaec.herokuapp.com//api/v1/voter/profile/${id}`
+      );
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(data.findAdmin);
       console.log(vData);
@@ -24,7 +26,9 @@ const InfoCard = ({ linkBoshuk }) => {
 
       const cId = vData.findVoter.centerId;
 
-      const cenn = await get(`http://localhost:4000/api/v1/center/${cId}`);
+      const cenn = await get(
+        `https://banglaec.herokuapp.com//api/v1/center/${cId}`
+      );
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(cenn);
       setCData(cenn);
@@ -44,13 +48,15 @@ const InfoCard = ({ linkBoshuk }) => {
             <Col className="mx-auto col-xl-4">
               <Card className="text-center shadow main_card">
                 <div className="card_image">
-                  <Card.Img className="shadow" src={`http://localhost:4000/${uData.voterImage}`} />
+                  <Card.Img
+                    className="shadow"
+                    src={`https://banglaec.herokuapp.com//${uData.voterImage}`}
+                  />
                 </div>
                 <Card.Body>
                   <Card.Title className="mb-5">
                     <strong>{uData.voterName}</strong>
                   </Card.Title>
-
 
                   <p>
                     <strong>Address : </strong>
@@ -60,7 +66,7 @@ const InfoCard = ({ linkBoshuk }) => {
                   <p>
                     <strong>Center : </strong> {centData.centerName}
                   </p>
-                  
+
                   <RedButton toPage={linkBoshuk} btnName="Vote" />
                 </Card.Body>
               </Card>

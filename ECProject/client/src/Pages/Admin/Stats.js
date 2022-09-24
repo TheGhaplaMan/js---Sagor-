@@ -21,13 +21,17 @@ const Stats = () => {
 
   useEffect(() => {
     const pailam = async () => {
-      const data = await get(`http://localhost:4000/api/v1/admin/${id}`);
+      const data = await get(
+        `https://banglaec.herokuapp.com//api/v1/admin/${id}`
+      );
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(data.findAdmin);
 
       setUData(data.findAdmin);
 
-      const candidates = await get("http://localhost:4000/api/v1/candidate");
+      const candidates = await get(
+        "https://banglaec.herokuapp.com//api/v1/candidate"
+      );
       // const data = await get("http://theghaplaman.herokuapp.com/api//v1/candidate");
       // console.log(candidates);
       setCData(candidates[0].majorCandidates);

@@ -20,7 +20,7 @@ const Scanner = (props) => {
             console.info(error);
           }
         }}
-        style={{ width: "100%" }}
+        style={{ width: "60%" }}
       />
       <p>{data}</p>
     </>

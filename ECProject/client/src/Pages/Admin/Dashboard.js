@@ -15,7 +15,9 @@ const Dashboard = () => {
 
   useEffect(() => {
     const pailam = async () => {
-      const data = await get(`http://localhost:4000/api/v1/admin/${id}`);
+      const data = await get(
+        `https://banglaec.herokuapp.com//api/v1/admin/${id}`
+      );
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(data.findAdmin);
       // console.log(data);
@@ -23,7 +25,9 @@ const Dashboard = () => {
 
       const cId = data.findAdmin.centerId;
 
-      const cenn = await get(`http://localhost:4000/api/v1/center/${cId}`);
+      const cenn = await get(
+        `https://banglaec.herokuapp.com//api/v1/center/${cId}`
+      );
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(cenn);
       setCData(cenn);
@@ -47,7 +51,7 @@ const Dashboard = () => {
         <h2 className="text-center fw-semibold display-5 mt-2 mb-1">
           {uData.userName}
         </h2>
-       
+
         <h4 className="text-end mt-1">
           Total Voters{" "}
           <span className="text-danger display-6"> {uData.totalVoter}</span>
