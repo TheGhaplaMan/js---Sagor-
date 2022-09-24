@@ -17090,7 +17090,7 @@
                               (e.prev = 2),
                               (e.next = 5),
                               xt(
-                                "https://banglaec.herokuapp.com//api/v1/admin/login",
+                                "https://banglaec.herokuapp.com/api/v1/admin/login",
                                 { email: r, pass: o }
                               )
                             );
@@ -20359,7 +20359,7 @@
                             return (
                               (e.next = 2),
                               Ct(
-                                "https://banglaec.herokuapp.com//api/v1/admin/".concat(
+                                "https://banglaec.herokuapp.com/api/v1/admin/".concat(
                                   c
                                 )
                               )
@@ -20371,7 +20371,7 @@
                               (r = t.findAdmin.centerId),
                               (e.next = 7),
                               Ct(
-                                "https://banglaec.herokuapp.com//api/v1/center/".concat(
+                                "https://banglaec.herokuapp.com/api/v1/center/".concat(
                                   r
                                 )
                               )
@@ -20601,7 +20601,7 @@
                               return (
                                 (e.next = 2),
                                 Ct(
-                                  "https://banglaec.herokuapp.com//api/v1/admin/".concat(
+                                  "https://banglaec.herokuapp.com/api/v1/admin/".concat(
                                     c
                                   )
                                 )
@@ -20613,7 +20613,7 @@
                                 (r = t.findAdmin.centerId),
                                 (e.next = 7),
                                 Ct(
-                                  "https://banglaec.herokuapp.com//api/v1/center/".concat(
+                                  "https://banglaec.herokuapp.com/api/v1/center/".concat(
                                     r
                                   )
                                 )
@@ -20718,7 +20718,7 @@
                           return (
                             (e.next = 2),
                             fetch(
-                              "https://banglaec.herokuapp.com//api/v1/admin/".concat(
+                              "https://banglaec.herokuapp.com/api/v1/admin/".concat(
                                 d
                               ),
                               {
@@ -20741,7 +20741,7 @@
                             (n = r.findAdmin.centerId),
                             (e.next = 10),
                             Ct(
-                              "https://banglaec.herokuapp.com//api/v1/center/".concat(
+                              "https://banglaec.herokuapp.com/api/v1/center/".concat(
                                 n
                               )
                             )
@@ -20838,7 +20838,7 @@
                             return (
                               (e.next = 2),
                               Ct(
-                                "https://banglaec.herokuapp.com//api/v1/admin/".concat(
+                                "https://banglaec.herokuapp.com/api/v1/admin/".concat(
                                   c
                                 )
                               )
@@ -20849,7 +20849,7 @@
                               n(t.findAdmin),
                               (e.next = 6),
                               Ct(
-                                "https://banglaec.herokuapp.com//api/v1/candidate"
+                                "https://banglaec.herokuapp.com/api/v1/candidate"
                               )
                             );
                           case 6:
@@ -20929,7 +20929,7 @@
                               (e.prev = 2),
                               (e.next = 5),
                               xt(
-                                "https://banglaec.herokuapp.com//api/v1/voter/login",
+                                "https://banglaec.herokuapp.com/api/v1/voter/login",
                                 { voterNID: r, voterPin: o }
                               )
                             );
@@ -21107,7 +21107,7 @@
                             return (
                               (e.next = 2),
                               Ct(
-                                "https://banglaec.herokuapp.com//api/v1/voter/profile/".concat(
+                                "https://banglaec.herokuapp.com/api/v1/voter/profile/".concat(
                                   u
                                 )
                               )
@@ -21120,7 +21120,7 @@
                               (r = t.findVoter.centerId),
                               (e.next = 8),
                               Ct(
-                                "https://banglaec.herokuapp.com//api/v1/center/".concat(
+                                "https://banglaec.herokuapp.com/api/v1/center/".concat(
                                   r
                                 )
                               )
@@ -21155,7 +21155,7 @@
                             className: "card_image",
                             children: (0, oe.jsx)(ya.Img, {
                               className: "shadow",
-                              src: "https://banglaec.herokuapp.com//".concat(
+                              src: "https://banglaec.herokuapp.com/".concat(
                                 o.voterImage
                               ),
                             }),
@@ -21341,7 +21341,7 @@
                               (t.prev = 2),
                               (t.next = 5),
                               fetch(
-                                "https://banglaec.herokuapp.com//api/v1/admin/new-admin",
+                                "https://banglaec.herokuapp.com/api/v1/admin/new-admin",
                                 {
                                   method: "POST",
                                   headers: {
@@ -21404,9 +21404,7 @@
                           case 0:
                             return (
                               (e.next = 2),
-                              Ct(
-                                "https://banglaec.herokuapp.com//api/v1/center"
-                              )
+                              Ct("https://banglaec.herokuapp.com/api/v1/center")
                             );
                           case 2:
                             (t = e.sent), p(t);
@@ -21619,7 +21617,7 @@
                               (t.prev = 11),
                               (t.next = 14),
                               fetch(
-                                "https://banglaec.herokuapp.com//api/v1/voter/new-voter",
+                                "https://banglaec.herokuapp.com/api/v1/voter/new-voter",
                                 { method: "POST", body: f }
                               )
                             );
@@ -21664,9 +21662,7 @@
                           case 0:
                             return (
                               (e.next = 2),
-                              Ct(
-                                "https://banglaec.herokuapp.com//api/v1/center"
-                              )
+                              Ct("https://banglaec.herokuapp.com/api/v1/center")
                             );
                           case 2:
                             (t = e.sent), p(t);

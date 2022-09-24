@@ -22,7 +22,7 @@ const Stats = () => {
   useEffect(() => {
     const pailam = async () => {
       const data = await get(
-        `https://banglaec.herokuapp.com//api/v1/admin/${id}`
+        `https://banglaec.herokuapp.com/api/v1/admin/${id}`
       );
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(data.findAdmin);
@@ -30,7 +30,7 @@ const Stats = () => {
       setUData(data.findAdmin);
 
       const candidates = await get(
-        "https://banglaec.herokuapp.com//api/v1/candidate"
+        "https://banglaec.herokuapp.com/api/v1/candidate"
       );
       // const data = await get("http://theghaplaman.herokuapp.com/api//v1/candidate");
       // console.log(candidates);

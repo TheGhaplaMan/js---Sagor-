@@ -16,7 +16,7 @@ const Dashboard = () => {
   useEffect(() => {
     const pailam = async () => {
       const data = await get(
-        `https://banglaec.herokuapp.com//api/v1/admin/${id}`
+        `https://banglaec.herokuapp.com/api/v1/admin/${id}`
       );
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(data.findAdmin);
@@ -26,7 +26,7 @@ const Dashboard = () => {
       const cId = data.findAdmin.centerId;
 
       const cenn = await get(
-        `https://banglaec.herokuapp.com//api/v1/center/${cId}`
+        `https://banglaec.herokuapp.com/api/v1/center/${cId}`
       );
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(cenn);

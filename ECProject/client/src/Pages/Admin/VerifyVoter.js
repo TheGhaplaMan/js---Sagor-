@@ -18,7 +18,7 @@ const VerifyVoter = () => {
   useEffect(() => {
     const pailam = async () => {
       const data = await get(
-        `https://banglaec.herokuapp.com//api/v1/admin/${id}`
+        `https://banglaec.herokuapp.com/api/v1/admin/${id}`
       );
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(data.findAdmin);
@@ -28,7 +28,7 @@ const VerifyVoter = () => {
       // console.log(omuk.data.findAdmin);
       // setUData(omuk.data.findAdmin);
       const cenn = await get(
-        `https://banglaec.herokuapp.com//api/v1/center/${cId}`
+        `https://banglaec.herokuapp.com/api/v1/center/${cId}`
       );
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(cenn);

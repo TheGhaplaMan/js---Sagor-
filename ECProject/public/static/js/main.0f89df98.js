@@ -16997,7 +16997,7 @@
                               (e.prev = 2),
                               (e.next = 5),
                               fetch(
-                                "https://banglaec.herokuapp.com//api/v1/admin/login",
+                                "https://banglaec.herokuapp.com/api/v1/admin/login",
                                 {
                                   method: "POST",
                                   headers: {
@@ -20273,7 +20273,7 @@
                         return (
                           (e.next = 2),
                           fetch(
-                            "https://banglaec.herokuapp.com//api/v1/admin/".concat(
+                            "https://banglaec.herokuapp.com/api/v1/admin/".concat(
                               l
                             ),
                             {
@@ -20293,7 +20293,7 @@
                           console.log(o),
                           (e.next = 12),
                           fetch(
-                            "https://banglaec.herokuapp.com//api/v1/center/".concat(
+                            "https://banglaec.herokuapp.com/api/v1/center/".concat(
                               o
                             ),
                             {

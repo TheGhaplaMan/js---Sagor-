@@ -17095,7 +17095,7 @@
                               (e.prev = 2),
                               (e.next = 5),
                               xt(
-                                "https://banglaec.herokuapp.com//api/v1/admin/login",
+                                "https://banglaec.herokuapp.com/api/v1/admin/login",
                                 { email: r, pass: o }
                               )
                             );
@@ -20364,7 +20364,7 @@
                             return (
                               (e.next = 2),
                               Ct(
-                                "https://banglaec.herokuapp.com//api/v1/admin/".concat(
+                                "https://banglaec.herokuapp.com/api/v1/admin/".concat(
                                   c
                                 )
                               )
@@ -20376,7 +20376,7 @@
                               (r = t.findAdmin.centerId),
                               (e.next = 7),
                               Ct(
-                                "https://banglaec.herokuapp.com//api/v1/center/".concat(
+                                "https://banglaec.herokuapp.com/api/v1/center/".concat(
                                   r
                                 )
                               )
@@ -20607,7 +20607,7 @@
                             return (
                               (e.next = 2),
                               Ct(
-                                "https://banglaec.herokuapp.com//api/v1/admin/".concat(
+                                "https://banglaec.herokuapp.com/api/v1/admin/".concat(
                                   c
                                 )
                               )
@@ -20619,7 +20619,7 @@
                               (r = t.findAdmin.centerId),
                               (e.next = 7),
                               Ct(
-                                "https://banglaec.herokuapp.com//api/v1/center/".concat(
+                                "https://banglaec.herokuapp.com/api/v1/center/".concat(
                                   r
                                 )
                               )
@@ -20724,7 +20724,7 @@
                           return (
                             (e.next = 2),
                             fetch(
-                              "https://banglaec.herokuapp.com//api/v1/admin/".concat(
+                              "https://banglaec.herokuapp.com/api/v1/admin/".concat(
                                 d
                               ),
                               {
@@ -20747,7 +20747,7 @@
                             (n = r.findAdmin.centerId),
                             (e.next = 10),
                             Ct(
-                              "https://banglaec.herokuapp.com//api/v1/center/".concat(
+                              "https://banglaec.herokuapp.com/api/v1/center/".concat(
                                 n
                               )
                             )
@@ -20844,7 +20844,7 @@
                             return (
                               (e.next = 2),
                               Ct(
-                                "https://banglaec.herokuapp.com//api/v1/admin/".concat(
+                                "https://banglaec.herokuapp.com/api/v1/admin/".concat(
                                   c
                                 )
                               )
@@ -20855,7 +20855,7 @@
                               n(t.findAdmin),
                               (e.next = 6),
                               Ct(
-                                "https://banglaec.herokuapp.com//api/v1/candidate"
+                                "https://banglaec.herokuapp.com/api/v1/candidate"
                               )
                             );
                           case 6:
@@ -21358,7 +21358,7 @@
                               (t.prev = 2),
                               (t.next = 5),
                               fetch(
-                                "https://banglaec.herokuapp.com//api/v1/admin/new-admin",
+                                "https://banglaec.herokuapp.com/api/v1/admin/new-admin",
                                 {
                                   method: "POST",
                                   headers: {
@@ -21422,9 +21422,7 @@
                           case 0:
                             return (
                               (e.next = 2),
-                              Ct(
-                                "https://banglaec.herokuapp.com//api/v1/center"
-                              )
+                              Ct("https://banglaec.herokuapp.com/api/v1/center")
                             );
                           case 2:
                             (t = e.sent), p(t);

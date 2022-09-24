@@ -17075,7 +17075,7 @@
                               (e.prev = 2),
                               (e.next = 5),
                               bt(
-                                "https://banglaec.herokuapp.com//api/v1/admin/login",
+                                "https://banglaec.herokuapp.com/api/v1/admin/login",
                                 { email: r, pass: o }
                               )
                             );
@@ -20343,7 +20343,7 @@
                             return (
                               (e.next = 2),
                               kt(
-                                "https://banglaec.herokuapp.com//api/v1/admin/".concat(
+                                "https://banglaec.herokuapp.com/api/v1/admin/".concat(
                                   c
                                 )
                               )
@@ -20355,7 +20355,7 @@
                               (r = t.findAdmin.centerId),
                               (e.next = 7),
                               kt(
-                                "https://banglaec.herokuapp.com//api/v1/center/".concat(
+                                "https://banglaec.herokuapp.com/api/v1/center/".concat(
                                   r
                                 )
                               )
@@ -20576,7 +20576,7 @@
                             return (
                               (e.next = 2),
                               kt(
-                                "https://banglaec.herokuapp.com//api/v1/admin/".concat(
+                                "https://banglaec.herokuapp.com/api/v1/admin/".concat(
                                   o
                                 )
                               )
@@ -20674,7 +20674,7 @@
                           return (
                             (e.next = 2),
                             fetch(
-                              "https://banglaec.herokuapp.com//api/v1/admin/".concat(
+                              "https://banglaec.herokuapp.com/api/v1/admin/".concat(
                                 c
                               ),
                               {
@@ -20778,7 +20778,7 @@
                             return (
                               (e.next = 2),
                               kt(
-                                "https://banglaec.herokuapp.com//api/v1/admin/".concat(
+                                "https://banglaec.herokuapp.com/api/v1/admin/".concat(
                                   c
                                 )
                               )
@@ -20789,7 +20789,7 @@
                               n(t.findAdmin),
                               (e.next = 6),
                               kt(
-                                "https://banglaec.herokuapp.com//api/v1/candidate"
+                                "https://banglaec.herokuapp.com/api/v1/candidate"
                               )
                             );
                           case 6:

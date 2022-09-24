@@ -20251,7 +20251,7 @@
         Go = function () {
           return (
             (0, t.useEffect)(function () {}, []),
-            fetch("https://banglaec.herokuapp.com//api/v1/admin/all-admins")
+            fetch("https://banglaec.herokuapp.com/api/v1/admin/all-admins")
               .then(function (e) {
                 return console.log(e);
               })

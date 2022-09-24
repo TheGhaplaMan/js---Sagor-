@@ -27,7 +27,7 @@ const UserInput = ({ text }) => {
     const { voterNID, voterPin } = info;
     try {
       const res = await post(
-        "https://banglaec.herokuapp.com//api/v1/voter/login",
+        "https://banglaec.herokuapp.com/api/v1/voter/login",
         {
           voterNID,
           voterPin,

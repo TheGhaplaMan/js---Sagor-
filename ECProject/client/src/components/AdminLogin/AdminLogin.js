@@ -26,7 +26,7 @@ const AdminLogin = ({ text }) => {
     const { email, pass } = info;
     try {
       const res = await post(
-        "https://banglaec.herokuapp.com//api/v1/admin/login",
+        "https://banglaec.herokuapp.com/api/v1/admin/login",
         {
           email,
           pass,
