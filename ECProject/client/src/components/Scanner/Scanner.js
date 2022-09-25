@@ -7,6 +7,7 @@ function QRscanner() {
   const handleScan = (data) => {
     if (data) {
       setQrscan(data);
+      console.log(data);
     }
   };
   const handleError = (err) => {
@@ -23,7 +24,7 @@ function QRscanner() {
             delay={300}
             onError={handleError}
             onScan={handleScan}
-            style={{ height: 240, width: 320 }}
+            style={{ height: 100, width: 100 }}
           />
         </div>
       </center>
