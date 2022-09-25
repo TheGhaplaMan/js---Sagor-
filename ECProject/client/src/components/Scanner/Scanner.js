@@ -2,7 +2,7 @@ import "./Scanner.scss";
 import { useState, useEffect } from "react";
 import QrReader from "react-qr-reader";
 import axios from "axios";
-import Modal from "react-bootstrap/Modal";
+import { Modal, Button } from "react-bootstrap";
 import { get } from "../../apis/bebakApi";
 
 //https://codesandbox.io/s/r3tyk
