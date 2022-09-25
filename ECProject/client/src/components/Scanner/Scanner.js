@@ -45,6 +45,7 @@ const Scanner = (props) => {
           if (!!error) {
             console.info(error);
           }
+          console.log("kam kore na ken", result, error);
         }}
         style={{ width: "60%" }}
       />
