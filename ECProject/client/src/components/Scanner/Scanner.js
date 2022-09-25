@@ -36,6 +36,7 @@ const Scanner = (props) => {
   return (
     <>
       <QrReader
+        delay={500}
         onResult={(result, error) => {
           if (!!result) {
             setData(result?.text);
