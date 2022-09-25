@@ -33,6 +33,10 @@ const Scanner = (props) => {
 
   const handleConfirm = () => {};
 
+  const handleScan = (result) => {
+    console.log(result);
+  };
+
   return (
     <>
       <QrReader
@@ -48,6 +52,8 @@ const Scanner = (props) => {
           console.log("kam kore na ken", result, error);
         }}
         style={{ width: "60%" }}
+        onScan={handleScan}
+        legacyMode
       />
 
       <Modal show={show} onHide={handleClose}>
