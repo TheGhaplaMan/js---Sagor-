@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { QrReader } from "react-qr-reader";
 import { useNavigate } from "react-router-dom";
 
@@ -23,7 +23,7 @@ function QRscanner() {
 
       <center>
         <div style={{ marginTop: 30 }}>
-          <QrScan
+          <QrReader
             delay={300}
             onError={handleError}
             onResult={handleScan}
