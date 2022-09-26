@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { QrReader } from "react-qr-reader";
 import { useNavigate } from "react-router-dom";
 
-function QRscanner() {
+const QRscanner = () => {
   // const [qrscan, setQrscan] = useState("No result");
   const [data, setData] = useState("No result");
   console.log(data);
@@ -52,6 +52,6 @@ function QRscanner() {
       </center>
     </div>
   );
-}
+};
 
 export default QRscanner;
