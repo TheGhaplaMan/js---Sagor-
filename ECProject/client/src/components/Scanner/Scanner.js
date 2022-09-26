@@ -26,7 +26,7 @@ function QRscanner() {
       <h3>{data}</h3>
 
       <center>
-        <div style={{ marginTop: 30 }}>
+        <div style={{ marginTop: 30, height: 100, width: 100 }}>
           {/* <QrReader
             delay={300}
             onError={handleError}
@@ -38,13 +38,14 @@ function QRscanner() {
             onResult={(result, error) => {
               if (!!result) {
                 setData(result?.text);
+                console.log(result);
               }
 
               if (!!error) {
                 console.info(error);
               }
             }}
-            style={{ height: 100, width: 100 }}
+            // style={{ height: 100, width: 100 }}
             delay={500}
           />
         </div>
