@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import QrScan from "react-qr-reader";
+import { QrReader } from "react-qr-reader";
 import { useNavigate } from "react-router-dom";
 
 function QRscanner() {
@@ -26,7 +26,7 @@ function QRscanner() {
           <QrScan
             delay={300}
             onError={handleError}
-            onScan={handleScan}
+            onResult={handleScan}
             style={{ height: 100, width: 100 }}
           />
         </div>
