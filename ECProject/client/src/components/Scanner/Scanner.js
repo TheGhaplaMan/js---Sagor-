@@ -36,12 +36,12 @@ const QRscanner = () => {
 
           <QrReader
             onResult={(result, error) => {
-              if (!!result) {
-                setData(result?.text);
+              if (result) {
+                setData(result.text);
                 console.log(result);
               }
 
-              if (!!error) {
+              if (error) {
                 console.info(error);
               }
             }}
