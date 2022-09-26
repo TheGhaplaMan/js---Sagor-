@@ -2,7 +2,7 @@ import React from "react";
 
 import Navigation from "../../components/Navbar/Navbar";
 import RedButton from "../../components/Button/Redbutton";
-import Scanner from "../../components/Scanner/Scanner";
+import QRscanner from "../../components/Scanner/Scanner";
 import { useNavigate } from "react-router-dom";
 
 const Scan = () => {
@@ -23,7 +23,7 @@ const Scan = () => {
         </button>
         {/* <RedButton onclick=navigate(-1) btnName="Home" /> */}
       </div>
-      <Scanner />
+      <QRscanner />
     </>
   );
 };

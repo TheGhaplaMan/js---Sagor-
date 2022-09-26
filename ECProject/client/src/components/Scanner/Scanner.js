@@ -23,6 +23,7 @@ function QRscanner() {
   return (
     <div>
       <p>QR Scanner</p>
+      <h3>{data}</h3>
 
       <center>
         <div style={{ marginTop: 30 }}>
@@ -44,11 +45,10 @@ function QRscanner() {
               }
             }}
             style={{ height: 100, width: 100 }}
+            delay={500}
           />
         </div>
       </center>
-
-      <h3>{data}</h3>
     </div>
   );
 }
