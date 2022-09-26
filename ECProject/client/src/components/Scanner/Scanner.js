@@ -43,6 +43,7 @@ function QRscanner() {
                 console.info(error);
               }
             }}
+            style={{ height: 100, width: 100 }}
           />
         </div>
       </center>
