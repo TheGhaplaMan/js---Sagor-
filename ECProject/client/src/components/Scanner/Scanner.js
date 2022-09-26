@@ -4,18 +4,21 @@ import { QrReader } from "react-qr-reader";
 import { useNavigate } from "react-router-dom";
 
 function QRscanner() {
-  const [qrscan, setQrscan] = useState("No result");
+  // const [qrscan, setQrscan] = useState("No result");
+  const [data, setData] = useState("No result");
+  console.log(data);
+
   const navigate = useNavigate();
-  const handleScan = (data) => {
-    if (data) {
-      setQrscan(data);
-      navigate(-1);
-      console.log(data);
-    }
-  };
-  const handleError = (err) => {
-    console.error(err);
-  };
+  // const handleScan = (data) => {
+  //   if (data) {
+  //     setQrscan(data);
+  //     navigate(-1);
+  //     console.log(data);
+  //   }
+  // };
+  // const handleError = (err) => {
+  //   console.error(err);
+  // };
 
   return (
     <div>
@@ -23,16 +26,28 @@ function QRscanner() {
 
       <center>
         <div style={{ marginTop: 30 }}>
-          <QrReader
+          {/* <QrReader
             delay={300}
             onError={handleError}
             onResult={handleScan}
             style={{ height: 100, width: 100 }}
+          /> */}
+
+          <QrReader
+            onResult={(result, error) => {
+              if (!!result) {
+                setData(result?.text);
+              }
+
+              if (!!error) {
+                console.info(error);
+              }
+            }}
           />
         </div>
       </center>
 
-      <h3>{qrscan}</h3>
+      <h3>{data}</h3>
     </div>
   );
 }
