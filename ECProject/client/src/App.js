@@ -24,6 +24,7 @@ import VoteConfirm from "./Pages/User/VoteConfirm";
 import CreateAdmin from "./Pages/Admin/CreateAdmin";
 import { AdmPrivateRoute, VoterPrivateRoute } from "./components/PrivateRoute";
 import VoterCreate from "./Pages/User/CreateVoter/VoterCreate";
+import Alternative from "./Pages/User/Alternative";
 
 const App = () => {
   // console.log(localStorage.getItem("token"));
@@ -31,7 +32,7 @@ const App = () => {
   return (
     <>
       <Routes>
-      <Route exact path="/" element={<Navigate replace to="/login" />} />
+        <Route exact path="/" element={<Navigate replace to="/login" />} />
         {/* Admin */}
         <Route exact path="/admin" element={<AdmPrivateRoute />}>
           <Route exact path="/admin/dashboard/:id" element={<Dashboard />} />
@@ -52,14 +53,13 @@ const App = () => {
         <Route path="/user/create" element={<VoterCreate />} />
 
         <Route exact path="/user" element={<VoterPrivateRoute />}>
-
-        
-        <Route path="/user/:id" element={<UserInfo />} />
-        <Route path="/user/otp" element={<OTP />} />
-        <Route path="/user/scan" element={<Scan />} />
-        <Route path="/user/success" element={<Success />} />
-        <Route path="/user/confirm-vote" element={<VoteConfirm />} />
-        {/* hudai */}
+          <Route path="/user/:id" element={<UserInfo />} />
+          <Route path="/user/otp" element={<OTP />} />
+          <Route path="/user/scan" element={<Scan />} />
+          <Route path="/user/alternative" element={<Alternative />} />
+          <Route path="/user/success" element={<Success />} />
+          <Route path="/user/confirm-vote" element={<VoteConfirm />} />
+          {/* hudai */}
         </Route>
 
         <Route path="/*" element={<Error />} />

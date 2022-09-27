@@ -21,7 +21,7 @@ const Scan = () => {
         >
           Back
         </button>
-        {/* <RedButton onclick=navigate(-1) btnName="Home" /> */}
+        <RedButton toPage="/user/alternative" btnName="Alternative" />
       </div>
       <QRscanner />
     </>
