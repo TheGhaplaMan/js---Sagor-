@@ -27,7 +27,7 @@ const Scan = () => {
       );
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(data.findAdmin);
-      console.log(vData);
+      // console.log(vData);
       setUData(vData.findVoter);
 
       if (vData.findVoter.voteStatus.status == true) {

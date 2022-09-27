@@ -8,12 +8,12 @@ const QRscanner = () => {
   const handleDecode = (result) => {
     if (result) {
       navigate(`/user/confirm/${result.data}`);
-      console.log(result.data);
+      // console.log(result.data);
     }
   };
 
   const handleScannerLoad = (mode) => {
-    console.log(mode);
+    // console.log(mode);
   };
 
   return (

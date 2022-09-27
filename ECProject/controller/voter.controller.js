@@ -43,7 +43,7 @@ exports.createVoter = async (req, res, next) => {
       .status(403)
       .json({ status: "error", message: "Already ase bhai" });
   }
-  console.log("edai", req.body);
+  // console.log("edai", req.body);
   const newVoter = await Voter.create({
     ...req.body,
     voterImage: `img/${req.file.originalname}`,
