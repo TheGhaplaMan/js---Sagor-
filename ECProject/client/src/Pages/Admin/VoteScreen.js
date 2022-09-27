@@ -21,22 +21,25 @@ const VoteScreen = () => {
   // console.log(id);
 
   const apiDaki = async () => {
-    // const omuk = await axios.get(`http://localhost:4000/api/v1/admin/${id}`, {Authorization: `Bearer ${localStorage.getItem("token")}`,});
+    // const omuk = await axios.get(`https://banglaec.herokuapp.com/api/v1/admin/${id}`, {Authorization: `Bearer ${localStorage.getItem("token")}`,});
     // const omuk = await axios.get(
     //   `http://theghaplaman.herokuapp.com/api/v1/admin/${id}`,
     //   { Authorization: `Bearer ${localStorage.getItem("token")}` }
     // );
 
-    const res = await fetch(`http://localhost:4000/api/v1/admin/${id}`, {
-      // const res = await fetch(
-      //   `http://theghaplaman.herokuapp.com/api/v1/admin/${id}`,
-      //   {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    const res = await fetch(
+      `https://banglaec.herokuapp.com/api/v1/admin/${id}`,
+      {
+        // const res = await fetch(
+        //   `http://theghaplaman.herokuapp.com/api/v1/admin/${id}`,
+        //   {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
     const data = await res.json();
     // console.log(data.findAdmin);
     setUData(data.findAdmin);
@@ -45,7 +48,9 @@ const VoteScreen = () => {
 
     // console.log(omuk.data.findAdmin);
     // setUData(omuk.data.findAdmin);
-    const cenn = await get(`http://localhost:4000/api/v1/center/${cId}`);
+    const cenn = await get(
+      `https://banglaec.herokuapp.com/api/v1/center/${cId}`
+    );
     // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
     // console.log(cenn);
     setCData(cenn);

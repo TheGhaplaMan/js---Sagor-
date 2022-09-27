@@ -49,7 +49,7 @@ const VoterCreate = () => {
     try {
       const res = await fetch(
         // "https://theghaplaman.herokuapp.com/api/v1/admin/new-admin",
-        "http://localhost:4000/api/v1/voter/new-voter",
+        "https://banglaec.herokuapp.com/api/v1/voter/new-voter",
         {
           method: "POST",
           body: formData,
@@ -72,7 +72,7 @@ const VoterCreate = () => {
   const [centData, setCentData] = useState([]);
   useEffect(() => {
     const pailam = async () => {
-      const data = await get("http://localhost:4000/api/v1/center");
+      const data = await get("https://banglaec.herokuapp.com/api/v1/center");
       setCentData(data);
       // console.log(data);
     };

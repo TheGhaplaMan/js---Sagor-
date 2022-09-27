@@ -25,10 +25,13 @@ const AdminLogin = ({ text }) => {
 
     const { email, pass } = info;
     try {
-      const res = await post("http://localhost:4000/api/v1/admin/login", {
-        email,
-        pass,
-      });
+      const res = await post(
+        "https://banglaec.herokuapp.com/api/v1/admin/login",
+        {
+          email,
+          pass,
+        }
+      );
       const data = await res.json();
       // console.log(data);
       if (data.status == "success") {

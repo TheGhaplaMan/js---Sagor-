@@ -27,7 +27,7 @@ const AdminCreate = () => {
     try {
       const res = await fetch(
         // "https://theghaplaman.herokuapp.com/api/v1/admin/new-admin",
-        "http://localhost:4000/api/v1/admin/new-admin",
+        "https://banglaec.herokuapp.com/api/v1/admin/new-admin",
         {
           method: "POST",
           headers: {
@@ -63,7 +63,7 @@ const AdminCreate = () => {
   const [centData, setCentData] = useState([]);
   useEffect(() => {
     const pailam = async () => {
-      const data = await get("http://localhost:4000/api/v1/center");
+      const data = await get("https://banglaec.herokuapp.com/api/v1/center");
       setCentData(data);
       // console.log(data);
     };

@@ -17,7 +17,7 @@ const InfoCard = ({ linkBoshuk }) => {
   useEffect(() => {
     const pailam = async () => {
       const vData = await get(
-        `http://localhost:4000/api/v1/voter/profile/${id}`
+        `https://banglaec.herokuapp.com/api/v1/voter/profile/${id}`
       );
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(data.findAdmin);
@@ -26,7 +26,9 @@ const InfoCard = ({ linkBoshuk }) => {
 
       const cId = vData.findVoter.centerId;
 
-      const cenn = await get(`http://localhost:4000/api/v1/center/${cId}`);
+      const cenn = await get(
+        `https://banglaec.herokuapp.com/api/v1/center/${cId}`
+      );
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(cenn);
       setCData(cenn);
@@ -48,7 +50,7 @@ const InfoCard = ({ linkBoshuk }) => {
                 <div className="card_image">
                   <Card.Img
                     className="shadow"
-                    src={`http://localhost:4000/${uData.voterImage}`}
+                    src={`https://banglaec.herokuapp.com/${uData.voterImage}`}
                   />
                 </div>
                 <Card.Body>

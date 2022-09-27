@@ -8,7 +8,7 @@ const Error = () => {
   // const [omukData, setData] = useState([]);
 
   // const apiDaki = async () => {
-  //   const omuk = await axios.get(`http://localhost:4000/api/v1/admin/${id}`);
+  //   const omuk = await axios.get(`https://banglaec.herokuapp.com/api/v1/admin/${id}`);
   //   // console.log(omuk.data.findAllAdmins);
   //   setData(omuk.data.findAllAdmins);
   // };
