@@ -17089,10 +17089,10 @@
                               (o = a.pass),
                               (e.prev = 2),
                               (e.next = 5),
-                              xt(
-                                "https://banglaec.herokuapp.com/api/v1/admin/login",
-                                { email: r, pass: o }
-                              )
+                              xt("http://localhost:4000/api/v1/admin/login", {
+                                email: r,
+                                pass: o,
+                              })
                             );
                           case 5:
                             return (i = e.sent), (e.next = 8), i.json();
@@ -20359,9 +20359,7 @@
                             return (
                               (e.next = 2),
                               Ct(
-                                "https://banglaec.herokuapp.com/api/v1/admin/".concat(
-                                  c
-                                )
+                                "http://localhost:4000/api/v1/admin/".concat(c)
                               )
                             );
                           case 2:
@@ -20371,9 +20369,7 @@
                               (r = t.findAdmin.centerId),
                               (e.next = 7),
                               Ct(
-                                "https://banglaec.herokuapp.com/api/v1/center/".concat(
-                                  r
-                                )
+                                "http://localhost:4000/api/v1/center/".concat(r)
                               )
                             );
                           case 7:
@@ -20601,9 +20597,7 @@
                             return (
                               (e.next = 2),
                               Ct(
-                                "https://banglaec.herokuapp.com/api/v1/admin/".concat(
-                                  c
-                                )
+                                "http://localhost:4000/api/v1/admin/".concat(c)
                               )
                             );
                           case 2:
@@ -20613,9 +20607,7 @@
                               (r = t.findAdmin.centerId),
                               (e.next = 7),
                               Ct(
-                                "https://banglaec.herokuapp.com/api/v1/center/".concat(
-                                  r
-                                )
+                                "http://localhost:4000/api/v1/center/".concat(r)
                               )
                             );
                           case 7:
@@ -20718,9 +20710,7 @@
                           return (
                             (e.next = 2),
                             fetch(
-                              "https://banglaec.herokuapp.com/api/v1/admin/".concat(
-                                d
-                              ),
+                              "http://localhost:4000/api/v1/admin/".concat(d),
                               {
                                 method: "GET",
                                 headers: {
@@ -20740,11 +20730,7 @@
                             s(r.findAdmin),
                             (n = r.findAdmin.centerId),
                             (e.next = 10),
-                            Ct(
-                              "https://banglaec.herokuapp.com/api/v1/center/".concat(
-                                n
-                              )
-                            )
+                            Ct("http://localhost:4000/api/v1/center/".concat(n))
                           );
                         case 10:
                           (o = e.sent), u(o);
@@ -20838,9 +20824,7 @@
                             return (
                               (e.next = 2),
                               Ct(
-                                "https://banglaec.herokuapp.com/api/v1/admin/".concat(
-                                  c
-                                )
+                                "http://localhost:4000/api/v1/admin/".concat(c)
                               )
                             );
                           case 2:
@@ -20848,9 +20832,7 @@
                               (t = e.sent),
                               n(t.findAdmin),
                               (e.next = 6),
-                              Ct(
-                                "https://banglaec.herokuapp.com/api/v1/candidate"
-                              )
+                              Ct("http://localhost:4000/api/v1/candidate")
                             );
                           case 6:
                             (r = e.sent), s(r[0].majorCandidates);
@@ -20928,10 +20910,10 @@
                               (o = a.voterPin),
                               (e.prev = 2),
                               (e.next = 5),
-                              xt(
-                                "https://banglaec.herokuapp.com/api/v1/voter/login",
-                                { voterNID: r, voterPin: o }
-                              )
+                              xt("http://localhost:4000/api/v1/voter/login", {
+                                voterNID: r,
+                                voterPin: o,
+                              })
                             );
                           case 5:
                             return (i = e.sent), (e.next = 8), i.json();
@@ -21107,7 +21089,7 @@
                             return (
                               (e.next = 2),
                               Ct(
-                                "https://banglaec.herokuapp.com/api/v1/voter/profile/".concat(
+                                "http://localhost:4000/api/v1/voter/profile/".concat(
                                   u
                                 )
                               )
@@ -21120,9 +21102,7 @@
                               (r = t.findVoter.centerId),
                               (e.next = 8),
                               Ct(
-                                "https://banglaec.herokuapp.com/api/v1/center/".concat(
-                                  r
-                                )
+                                "http://localhost:4000/api/v1/center/".concat(r)
                               )
                             );
                           case 8:
@@ -21155,7 +21135,7 @@
                             className: "card_image",
                             children: (0, oe.jsx)(ya.Img, {
                               className: "shadow",
-                              src: "https://banglaec.herokuapp.com/".concat(
+                              src: "http://localhost:4000/".concat(
                                 o.voterImage
                               ),
                             }),
@@ -21451,7 +21431,7 @@
                               (t.prev = 2),
                               (t.next = 5),
                               fetch(
-                                "https://banglaec.herokuapp.com/api/v1/admin/new-admin",
+                                "http://localhost:4000/api/v1/admin/new-admin",
                                 {
                                   method: "POST",
                                   headers: {
@@ -21514,7 +21494,7 @@
                           case 0:
                             return (
                               (e.next = 2),
-                              Ct("https://banglaec.herokuapp.com/api/v1/center")
+                              Ct("http://localhost:4000/api/v1/center")
                             );
                           case 2:
                             (t = e.sent), p(t);
@@ -21727,7 +21707,7 @@
                               (t.prev = 11),
                               (t.next = 14),
                               fetch(
-                                "https://banglaec.herokuapp.com/api/v1/voter/new-voter",
+                                "http://localhost:4000/api/v1/voter/new-voter",
                                 { method: "POST", body: f }
                               )
                             );
@@ -21772,7 +21752,7 @@
                           case 0:
                             return (
                               (e.next = 2),
-                              Ct("https://banglaec.herokuapp.com/api/v1/center")
+                              Ct("http://localhost:4000/api/v1/center")
                             );
                           case 2:
                             (t = e.sent), p(t);
