@@ -11,6 +11,8 @@ import { Container } from "react-bootstrap";
 const Scan = () => {
   const navigate = useNavigate();
   const [uData, setUData] = useState({});
+
+  const [alreadyVoted, setAlreadyVoted] = useState(false);
   const [centData, setCData] = useState({});
   const params = useParams();
   // console.log(params, "hudai");
@@ -29,8 +31,8 @@ const Scan = () => {
       setUData(vData.findVoter);
 
       if (vData.findVoter.voteStatus.status == true) {
+        setAlreadyVoted(true);
         window.alert("YOU HAVE ALREADY VOTED FOR THIS ELECTION");
-        const divOff = true;
       }
 
       const cId = vData.findVoter.centerId;
@@ -61,12 +63,13 @@ const Scan = () => {
           Back
         </button>
       </div>
-
-      <Container>
-        <div className="text-center">
-          <QRscanner />
-        </div>
-      </Container>
+      {!alreadyVoted && (
+        <Container>
+          <div className="text-center">
+            <QRscanner />
+          </div>
+        </Container>
+      )}
     </>
   );
 };

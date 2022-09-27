@@ -20,15 +20,14 @@ const io = new Server(server, {
 // const ngrok = require("ngrok");
 // (async function () {
 //   const token = "2EvGMg0Jlo25CahjzHvzw6XYLoj_5xHCDcLE3vTSFGtYQANGf";
-//   const url = await ngrok.connect({ authtoken: token, port: 4000 });
+//   const ngUrl = await ngrok.connect({ authtoken: token, port: 4000 });
 
-//   console.log(url);
+//   console.log(ngUrl);
 // })();
 
 // const localtunnel = require("localtunnel");
-
 // (async () => {
-//   const tunnel = await localtunnel({ port: 3000 });
+//   const tunnel = await localtunnel({ port: 4000 });
 
 //   // the assigned public url for your tunnel
 //   // i.e. https://abcdefgjhij.localtunnel.me
@@ -61,7 +60,12 @@ const voterRouter = require("./routes/voter.routes");
 const candidateRouter = require("./routes/candidate.routes");
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 // app.get("/");
 
 app.use("/api/v1/voter", voterRouter);

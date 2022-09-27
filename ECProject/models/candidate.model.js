@@ -1,22 +1,18 @@
 const mongoose = require("mongoose");
 
 const candidateSchema = mongoose.Schema({
-  majorCandidates: [
-    {
-      candidateName: {
-        type: String,
-        required: true,
-      },
-      voteReceived: {
-        type: Number,
-        default: 0,
-      },
-      candidateQR: {
-        type: String,
-        default: null,
-      },
-    },
-  ],
+  candidateName: {
+    type: String,
+    required: true,
+  },
+  voteReceived: {
+    type: Number,
+    default: 0,
+  },
+  candidateQR: {
+    type: String,
+    default: null,
+  },
 });
 
 const Candidates = mongoose.model("Candidates", candidateSchema);

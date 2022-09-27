@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const VoteConfirm = () => {
   const navigate = useNavigate();
 
-  // const [uData, setUData] = useState({});
+  const [candData, setCandData] = useState({});
   const [centData, setCData] = useState({});
   const params = useParams();
   // console.log(params, "hudai");
@@ -19,7 +19,7 @@ const VoteConfirm = () => {
     const pailam = async () => {
       const data = await get(`http://localhost:4000/api/v1/candidate/${id}`);
       console.log(data);
-      // setUData(data.findAdmin);
+      setCandData(data);
     };
     pailam();
   }, []);
@@ -39,8 +39,10 @@ const VoteConfirm = () => {
         </button>
       </div>
       <div className="text-center">
-        <h1 className="mb-5">Hold the Button to confirm your vote</h1>
-        <RedButton btnName="CONFIRM" />
+        <h1 className="mb-5">
+          Hold the Button to confirm your vote to {candData.candidateName}
+        </h1>
+        <RedButton toPage="/user/success" btnName="Confirm" />
       </div>
     </>
   );

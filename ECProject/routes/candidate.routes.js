@@ -7,6 +7,6 @@ router.post("/new-candidate", candidateController.createCandidate);
 router.get("/", candidateController.getCandidates);
 router.get("/:candidateId", candidateController.getOneCandidate);
 // router.get("/:centerId/qrCode", centerController.candidateQR);
-router.post(":/candidateId", candidateController.confirmVote);
+router.post("/:candidateId", candidateController.confirmVote);
 
 module.exports = router;

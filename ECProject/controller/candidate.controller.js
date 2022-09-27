@@ -18,15 +18,15 @@ exports.createCandidate = async (req, res, next) => {
   );
   newCandidate.candidateQR = qrGen;
 
-  for (const candidate of newCandidate.majorCandidates) {
-    const candidateQRGen = await promisify(qrCode.toDataURL)(
-      candidate._id.toString()
-      // candidate.candidateName
-    );
-    candidate.candidateQR = candidateQRGen;
-  }
+  // for (const candidate of newCandidate.majorCandidates) {
+  const candidateQRGen = await promisify(qrCode.toDataURL)(
+    newCandidate._id.toString()
+    // candidate.candidateName
+  );
+  newCandidate.candidateQR = candidateQRGen;
+  // }
 
-  newCandidate.markModified("candidates");
+  newCandidate.markModified("candidateQR");
   const updateCandidate = await newCandidate.save();
 
   res.status(201).json(updateCandidate);
@@ -38,7 +38,7 @@ exports.getCandidates = async (req, res, next) => {
 };
 
 exports.getOneCandidate = async (req, res, next) => {
-  const getOneCandidate = await Candidates.findOne(req.params.candidateId);
+  const getOneCandidate = await Candidates.findById(req.params.candidateId);
   res.status(200).json(getOneCandidate);
 };
 
