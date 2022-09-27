@@ -17074,13 +17074,10 @@
                               (o = a.pass),
                               (e.prev = 2),
                               (e.next = 5),
-                              bt(
-                                "https://banglaec.herokuapp.com/api/v1/admin/login",
-                                {
-                                  email: r,
-                                  pass: o,
-                                }
-                              )
+                              bt("http://localhost:4000/api/v1/admin/login", {
+                                email: r,
+                                pass: o,
+                              })
                             );
                           case 5:
                             return (i = e.sent), (e.next = 8), i.json();
@@ -20346,9 +20343,7 @@
                             return (
                               (e.next = 2),
                               kt(
-                                "https://banglaec.herokuapp.com/api/v1/admin/".concat(
-                                  c
-                                )
+                                "http://localhost:4000/api/v1/admin/".concat(c)
                               )
                             );
                           case 2:
@@ -20358,9 +20353,7 @@
                               (r = t.findAdmin.centerId),
                               (e.next = 7),
                               kt(
-                                "https://banglaec.herokuapp.com/api/v1/center/".concat(
-                                  r
-                                )
+                                "http://localhost:4000/api/v1/center/".concat(r)
                               )
                             );
                           case 7:
@@ -20579,9 +20572,7 @@
                             return (
                               (e.next = 2),
                               kt(
-                                "https://banglaec.herokuapp.com/api/v1/admin/".concat(
-                                  o
-                                )
+                                "http://localhost:4000/api/v1/admin/".concat(o)
                               )
                             );
                           case 2:
@@ -20677,9 +20668,7 @@
                           return (
                             (e.next = 2),
                             fetch(
-                              "https://banglaec.herokuapp.com/api/v1/admin/".concat(
-                                c
-                              ),
+                              "http://localhost:4000/api/v1/admin/".concat(c),
                               {
                                 method: "GET",
                                 headers: {
@@ -20781,9 +20770,7 @@
                             return (
                               (e.next = 2),
                               kt(
-                                "https://banglaec.herokuapp.com/api/v1/admin/".concat(
-                                  c
-                                )
+                                "http://localhost:4000/api/v1/admin/".concat(c)
                               )
                             );
                           case 2:
@@ -20791,9 +20778,7 @@
                               (t = e.sent),
                               n(t.findAdmin),
                               (e.next = 6),
-                              kt(
-                                "https://banglaec.herokuapp.com/api/v1/candidate"
-                              )
+                              kt("http://localhost:4000/api/v1/candidate")
                             );
                           case 6:
                             (r = e.sent), s(r[0].majorCandidates);

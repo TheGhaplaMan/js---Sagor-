@@ -17,7 +17,7 @@ const VoteConfirm = () => {
 
   useEffect(() => {
     const pailam = async () => {
-      const data = await get(`https://banglaec.herokuapp.com/api/v1/candidate/${id}`);
+      const data = await get(`http://localhost:4000/api/v1/candidate/${id}`);
       console.log(data);
       // setUData(data.findAdmin);
     };

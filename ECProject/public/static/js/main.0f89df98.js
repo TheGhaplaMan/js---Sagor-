@@ -16997,7 +16997,7 @@
                               (e.prev = 2),
                               (e.next = 5),
                               fetch(
-                                "https://banglaec.herokuapp.com/api/v1/admin/login",
+                                "http://localhost:4000/api/v1/admin/login",
                                 {
                                   method: "POST",
                                   headers: {
@@ -20273,9 +20273,7 @@
                         return (
                           (e.next = 2),
                           fetch(
-                            "https://banglaec.herokuapp.com/api/v1/admin/".concat(
-                              l
-                            ),
+                            "http://localhost:4000/api/v1/admin/".concat(l),
                             {
                               method: "GET",
                               headers: { "Content-Type": "application/json" },
@@ -20293,9 +20291,7 @@
                           console.log(o),
                           (e.next = 12),
                           fetch(
-                            "https://banglaec.herokuapp.com/api/v1/center/".concat(
-                              o
-                            ),
+                            "http://localhost:4000/api/v1/center/".concat(o),
                             {
                               method: "GET",
                               headers: { "Content-Type": "application/json" },

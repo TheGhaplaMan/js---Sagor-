@@ -5,7 +5,6 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const ngrok = require("ngrok");
 
 dotenv.config({ path: "./ECProject/config.env" });
 
@@ -18,12 +17,27 @@ const io = new Server(server, {
   },
 });
 
-(async function () {
-  const token = "2EvGMg0Jlo25CahjzHvzw6XYLoj_5xHCDcLE3vTSFGtYQANGf";
-  const url = await ngrok.connect({ authtoken: token, port: 3000 });
+// const ngrok = require("ngrok");
+// (async function () {
+//   const token = "2EvGMg0Jlo25CahjzHvzw6XYLoj_5xHCDcLE3vTSFGtYQANGf";
+//   const url = await ngrok.connect({ authtoken: token, port: 4000 });
 
-  console.log(url);
-})();
+//   console.log(url);
+// })();
+
+// const localtunnel = require("localtunnel");
+
+// (async () => {
+//   const tunnel = await localtunnel({ port: 3000 });
+
+//   // the assigned public url for your tunnel
+//   // i.e. https://abcdefgjhij.localtunnel.me
+//   tunnel.url;
+
+//   tunnel.on("close", () => {
+//     // tunnels are closed
+//   });
+// })();
 
 const port = process.env.PORT || 4000;
 const url = process.env.EC_DBURL;

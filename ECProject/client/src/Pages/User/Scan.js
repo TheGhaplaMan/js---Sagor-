@@ -21,7 +21,7 @@ const Scan = () => {
   useEffect(() => {
     const pailam = async () => {
       const vData = await get(
-        `https://banglaec.herokuapp.com/api/v1/voter/profile/${id}`
+        `http://localhost:4000/api/v1/voter/profile/${id}`
       );
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(data.findAdmin);
@@ -35,9 +35,7 @@ const Scan = () => {
 
       const cId = vData.findVoter.centerId;
 
-      const cenn = await get(
-        `https://banglaec.herokuapp.com/api/v1/center/${cId}`
-      );
+      const cenn = await get(`http://localhost:4000/api/v1/center/${cId}`);
       // const data = await get(`http://theghaplaman.herokuapp.com/api/v1/admin/${id}`);
       // console.log(cenn);
       setCData(cenn);
