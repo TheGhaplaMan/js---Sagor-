@@ -1,9 +1,15 @@
 import React from "react";
 import Scanner from "react-webcam-qr-scanner";
+import { useNavigate } from "react-router-dom";
 
 const QRscanner = () => {
+  const navigate = useNavigate();
+
   const handleDecode = (result) => {
-    console.log(result);
+    if (result) {
+      navigate(`/user/confirm/${result.data}`);
+      console.log(result.data);
+    }
   };
 
   const handleScannerLoad = (mode) => {

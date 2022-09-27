@@ -67,7 +67,10 @@ const InfoCard = ({ linkBoshuk }) => {
                     <strong>Center : </strong> {centData.centerName}
                   </p>
 
-                  <RedButton toPage={linkBoshuk} btnName="Vote" />
+                  <RedButton
+                    toPage={`/user/scan/${uData._id}`}
+                    btnName="Vote"
+                  />
                 </Card.Body>
               </Card>
             </Col>

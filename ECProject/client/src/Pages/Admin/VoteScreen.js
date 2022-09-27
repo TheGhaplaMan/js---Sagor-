@@ -8,6 +8,9 @@ import { qrCardData } from "../../data/data";
 import axios from "axios";
 import { get } from "../../apis/bebakApi";
 
+import { Col, Card } from "react-bootstrap";
+import "../../components/QRCard/QRCard";
+
 const VoteScreen = () => {
   const [data, setData] = useState(qrCardData);
 
@@ -70,9 +73,10 @@ const VoteScreen = () => {
           <RedButton toPage={`/admin/dashboard/${id}`} btnName="Home" />
 
           <Row>
-            {cardShuffle.map((element) => {
+            {/* {cardShuffle.map((element) => {
               return <QRCard key={element.id} {...element} />;
-            })}
+            })} */}
+            <QRCard />
           </Row>
           <h6 className="text-center display-3 fw-bold mt-3 pt-5">
             {centData.centerName}
